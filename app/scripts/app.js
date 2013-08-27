@@ -1,44 +1,35 @@
 'use strict';
 
-angular.module('remixApp', ['ui.state'])
-  .config(function ($urlRouterProvider, $locationProvider, $stateProvider) {
-    //$locationProvider.html5Mode(true);
-    $urlRouterProvider.when("", "/")
-    /*$routeProvider
-      .when('/', {
-        templateUrl: 'views/main.html',
-        controller: 'MainCtrl'
-      })
-      .when('/collection', {
+var app = angular.module('remixApp', ['ui.state']);
+app.config(function ($urlRouterProvider, $locationProvider, $stateProvider) {
+  //$locationProvider.html5Mode(true);
+  $urlRouterProvider.when("", "/");
+  $stateProvider
+  .state("home", {
+    url: "/",
+    views: {
+      'nav': {
+        templateUrl: 'views/nav.html',
+        controller: "NavCtrl"
+      },
+      '' : {
+        templateUrl: 'views/home.html',
+        controller: "HomeCtrl"
+      }
+    },
+  })
+  .state("collection", {
+    url: "/collection",
+    views: {
+      'nav': {
+        templateUrl: 'views/nav.html',
+        controller: "NavCtrl"
+      },
+      '' : {
         templateUrl: 'views/collection.html',
-        controller: 'CollectionCtrl'
-      })
-      .otherwise({
-        redirectTo: '/'
-      });
-    */
-    $stateProvider
-    .state("home", {
-      url: "/",
-      views: {
-        'nav': {
-          templateUrl: 'views/nav.html'
-        },
-        '' : {
-          templateUrl: 'views/home.html'
-        }
-      },
-    })
-    .state("collection", {
-      url: "/collection",
-      views: {
-        'nav': {
-          templateUrl: 'views/nav.html'
-        },
-        '' : {
-          templateUrl: 'views/collection.html'
-        }
-      },
-      
-    });
+        controller: "CollectionCtrl"
+      }
+    },
+    
   });
+});

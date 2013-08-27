@@ -1,6 +1,5 @@
 'use strict';
 
-angular.module('controllers', [])
-  .controller('CollectionCtrl', function ($scope) {
+app.controller('CollectionCtrl', function ($scope) {
     
-  });
+});
