@@ -16,18 +16,18 @@
       <ul class="nav navbar-nav navbar-right">
         <li class="dropdown" ng-show="user" ng-animate="{show: 'fade', hide: 'fade'}" style="display:none">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown"> 
-            <div class="avatar">
+            <span class="avatar">
               <img class="navbar-icon" ng-src="{{user.icon}}"> 
-              <div ng-model="user.vanityName"></div>
-            </div>
+              {{user.vanityName}}
+            </span>
             <b class="caret"></b>
           </a>
           <ul class="dropdown-menu">
-            <li><a href="#">Sign Out</a></li>
+            <li><a ng-click="signOut()">Sign Out</a></li>
           </ul>
         </li>
         <li class="login" ng-hide="user" style="display:none">
-          <button class="btn btn-primary navbar-btn" ng-click="signup()">Sign In with Rdio</button>
+          <button class="btn btn-primary navbar-btn" ng-click="signIn()">Sign In with Rdio</button>
         </li>
       </ul>
     </div>

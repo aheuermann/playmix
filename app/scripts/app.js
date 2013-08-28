@@ -32,4 +32,10 @@ app.config(function ($urlRouterProvider, $locationProvider, $stateProvider) {
     },
     
   });
+})
+.run(function(Rdio, $rootScope){
+  R.ready(function(){
+    $rootScope.user = Rdio.currentUser();
+    $rootScope.$apply();
+  });
 });

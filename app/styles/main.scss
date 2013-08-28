@@ -30,3 +30,15 @@ body {
   line-height: 1;
   letter-spacing: -1px;
 }
+
+.avatar > img{
+  height: 30px;
+  width: 30px;
+  box-sizing: border-box;
+  overflow: hidden;
+  border: 1px solid #555;
+  border-radius: 4px;
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.15);
+  vertical-align: middle;
+  margin-top:-5px;
+}
