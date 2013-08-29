@@ -59,3 +59,10 @@ body.bootstrappin{
   height: 100px;
   background-color: #333;
 }
+
+.navbar .track span{
+  display:none;
+}
+.navbar .track:hover span{
+  display:inline-block;
+}

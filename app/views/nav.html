@@ -12,10 +12,12 @@
     <div class="collapse navbar-collapse navbar-ex1-collapse">
       <ul class="nav navbar-nav">
         <li><a ng-href="#collection">Collection</a></li>
-        <li>
+        <li class="track" ng-if="{{track}}">
           <a ng-href="#song/{{track.key}}">
             <img class="navbar-icon" ng-src="{{track.icon}}" />
-             {{track.albumArtist}} - {{track.name}}
+            <span>
+              {{track.albumArtist}} - {{track.name}}
+            </span>
           </a>
         </li>
       </ul>
