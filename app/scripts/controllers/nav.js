@@ -1,11 +1,15 @@
 'use strict';
 
-app.controller('NavCtrl', function ($scope, Rdio) {
+app.controller('NavCtrl', function ($scope, $rootScope, Rdio) {
   $scope.signIn = function() {
     Rdio.auth().then(function(user) {
-      $scope.user = user;
+      $rootScope.user = user;
     }, function(){
       console.log("eerrrrrrr");
     });
+  }
+  if ($rootScope.user){
+     $scope.track = Rdio.currentTrack();
+     //console.log(Rdio.currentTrack().attributes);
   }
 });

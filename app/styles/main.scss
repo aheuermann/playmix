@@ -17,6 +17,13 @@ body {
 body.bootstrappin{
   background-color: #256cb7;
   color:#fafafa;
+  .container{
+    width: 100%;
+    > div{
+      position:absolute;
+      left: 50%;
+    }
+  }
 }
 
 .hero-unit {
@@ -36,7 +43,7 @@ body.bootstrappin{
   letter-spacing: -1px;
 }
 
-.avatar > img{
+.navbar img{
   height: 30px;
   width: 30px;
   box-sizing: border-box;
@@ -46,4 +53,9 @@ body.bootstrappin{
   box-shadow: 0 1px 0 rgba(255, 255, 255, 0.15);
   vertical-align: middle;
   margin-top:-5px;
+}
+
+.nav-divider{
+  height: 100px;
+  background-color: #333;
 }

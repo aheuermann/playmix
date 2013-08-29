@@ -12,6 +12,12 @@
     <div class="collapse navbar-collapse navbar-ex1-collapse">
       <ul class="nav navbar-nav">
         <li><a ng-href="#collection">Collection</a></li>
+        <li>
+          <a ng-href="#song/{{track.key}}">
+            <img class="navbar-icon" ng-src="{{track.icon}}" />
+             {{track.albumArtist}} - {{track.name}}
+          </a>
+        </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li class="dropdown" ng-show="user" ng-animate="{show: 'fade', hide: 'fade'}" style="display:none">
