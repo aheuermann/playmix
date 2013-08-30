@@ -1,8 +1,10 @@
 <div class="row" ng-switch on="!!playlists">
   <div ng-switch-when="true">
     <div ng-repeat="playlist in playlists">
-      <img ng-src="{{playlist.icon}}">
-      {{playlist.name}}
+      <a ng-href="#p/{{playlist.key}}">
+        <img ng-src="{{playlist.icon}}">
+        {{playlist.name}}
+      </a>
     </div>
   </div>
   <div ng-switch-when="false">Loading...</div>

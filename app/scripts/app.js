@@ -26,7 +26,7 @@ app.config(function ($urlRouterProvider, $locationProvider, $stateProvider) {
         controller: "NavCtrl"
       },
       '' : {
-        templateUrl: 'views/playlists.html',
+        templateUrl: 'views/playlists.list.html',
         controller: "PlaylistsCtrl"
       }
     },
@@ -41,6 +41,19 @@ app.config(function ($urlRouterProvider, $locationProvider, $stateProvider) {
       '' : {
         templateUrl: 'views/song.html',
         controller: "SongCtrl"
+      }
+    },
+  })
+  .state("playlist", {
+    url: "/p/{id}",
+    views: {
+      'nav': {
+        templateUrl: 'views/nav.html',
+        controller: "NavCtrl"
+      },
+      '' : {
+        templateUrl: 'views/playlist.html',
+        controller: "PlaylistCtrl"
       }
     },
   });

@@ -43,7 +43,7 @@ app.factory('Rdio', function ($q, $rootScope) {
         $rootScope.$apply();
       },
       error: function(response) {
-        console.err(response);
+        console.error(response);
         d.reject("ERRRRR");
         $rootScope.$apply();
       }
@@ -56,11 +56,34 @@ app.factory('Rdio', function ($q, $rootScope) {
     R.request({
       method: "getPlaylists", 
       success: function(response) {
+        console.log(response);
         d.resolve(response.result);
         $rootScope.$apply();
       },
       error: function(response) {
-        console.err(response);
+        console.error(response);
+        d.reject("ERRRRR");
+        $rootScope.$apply();
+      }
+    });
+    return d.promise;
+  }
+
+  var getPlaylist = function(id) {
+    var d = $q.defer();
+    R.request({
+      method: "get", 
+      content: {
+        keys: [id],
+        type: "Playlist",
+        extras: "tracks,Track.playCount"
+      },
+      success: function(response) {
+        d.resolve(response.result[id]);
+        $rootScope.$apply();
+      },
+      error: function(response) {
+        console.error(response);
         d.reject("ERRRRR");
         $rootScope.$apply();
       }
@@ -73,6 +96,7 @@ app.factory('Rdio', function ($q, $rootScope) {
     currentUser: currentUser,
     currentTrack: currentTrack,
     getSong: getSong,
-    getPlaylists: getPlaylists
+    getPlaylists: getPlaylists,
+    getPlaylist: getPlaylist
   };
 });
