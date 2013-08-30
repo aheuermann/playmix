@@ -18,16 +18,16 @@ app.config(function ($urlRouterProvider, $locationProvider, $stateProvider) {
       }
     },
   })
-  .state("collection", {
-    url: "/collection",
+  .state("playlists", {
+    url: "/playlists",
     views: {
       'nav': {
         templateUrl: 'views/nav.html',
         controller: "NavCtrl"
       },
       '' : {
-        templateUrl: 'views/collection.html',
-        controller: "CollectionCtrl"
+        templateUrl: 'views/playlists.html',
+        controller: "PlaylistsCtrl"
       }
     },
   })

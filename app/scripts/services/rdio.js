@@ -51,10 +51,28 @@ app.factory('Rdio', function ($q, $rootScope) {
     return d.promise;
   }
 
+  var getPlaylists = function(id) {
+    var d = $q.defer();
+    R.request({
+      method: "getPlaylists", 
+      success: function(response) {
+        d.resolve(response.result);
+        $rootScope.$apply();
+      },
+      error: function(response) {
+        console.err(response);
+        d.reject("ERRRRR");
+        $rootScope.$apply();
+      }
+    });
+    return d.promise;
+  }
+
   return {
     auth: auth,
     currentUser: currentUser,
     currentTrack: currentTrack,
-    getSong: getSong
+    getSong: getSong,
+    getPlaylists: getPlaylists
   };
 });
