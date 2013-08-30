@@ -18,20 +18,43 @@ app.factory('Rdio', function ($q, $rootScope) {
     }
     return d.promise;
   }
+
   var currentUser = function(){
     if (R.authenticated()) {
       return R.currentUser.attributes;
     }
   }
+  
   var currentTrack = function(){
     if (R.player.playingTrack()){
       return R.player.playingTrack().attributes;
     }
   }
 
+  var getSong = function(id) {
+    var d = $q.defer();
+    R.request({
+      method: "get", 
+      content: {
+        keys: [id]
+      },
+      success: function(response) {
+        d.resolve(response.result[id]);
+        $rootScope.$apply();
+      },
+      error: function(response) {
+        console.err(response);
+        d.reject("ERRRRR");
+        $rootScope.$apply();
+      }
+    });
+    return d.promise;
+  }
+
   return {
     auth: auth,
     currentUser: currentUser,
-    currentTrack: currentTrack
+    currentTrack: currentTrack,
+    getSong: getSong
   };
 });

@@ -1,0 +1,12 @@
+<div class="row" ng-switch on="!!song">
+  <div ng-switch-when="true">
+    <div class="col-md-3">
+      <img ng-src="{{song.icon}}">
+    </div>
+    <div class="col-md-9">
+      <h1>{{song.name}}</h1>
+      <h4>{{song.albumArtist}}</h4>
+    </div>
+  </div>
+  <div ng-switch-when="false">Loading...</div>
+</div>

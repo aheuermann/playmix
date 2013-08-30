@@ -30,7 +30,19 @@ app.config(function ($urlRouterProvider, $locationProvider, $stateProvider) {
         controller: "CollectionCtrl"
       }
     },
-    
+  })
+  .state("song", {
+    url: "/s/{id}",
+    views: {
+      'nav': {
+        templateUrl: 'views/nav.html',
+        controller: "NavCtrl"
+      },
+      '' : {
+        templateUrl: 'views/song.html',
+        controller: "SongCtrl"
+      }
+    },
   });
 })
 .run(function(Rdio, $rootScope){
