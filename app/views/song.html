@@ -10,3 +10,12 @@
   </div>
   <div ng-switch-when="false">Loading...</div>
 </div>
+<div class="row" ng-switch on="!!tracks">
+  <div ng-switch-when="true">
+    <div ng-repeat="track in tracks">
+      <img ng-src="{{track.artwork_url || 'http://placehold.it/100x100'}}">
+      {{track.title}}
+    </div>
+  </div>
+  <div ng-switch-when="false">Mixin'...</div>
+</div>
