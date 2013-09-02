@@ -68,6 +68,41 @@ body.bootstrappin{
   background-color: #333;
 }
 
-.navbar .track a{
-  display:inline-block;
+.navbar .track {
+  color: $gray-lighter;
+  padding-right: 10px;
+  padding-left: 10px;
+
+  a{
+    display:inline-block;
+    text-decoration: none;
+  }
+  .controls {
+    user-select: none;
+
+    .next, .prev, .playToggle {
+      color: $gray-lighter;
+      display: inline-block;
+    }
+
+    .next, .prev{
+      font-size: 20px;
+    }
+
+    .playToggle{
+      font-size: 25px;
+      margin-left:10px;
+      margin-right:10px;
+    }
+  }
+  .track-name{
+    text-overflow: ellipsis;
+    max-width: 220px;
+    white-space: nowrap;
+    overflow: hidden;
+    display: inline-block;
+  }
 }
+
+
+

@@ -18,7 +18,7 @@ app.factory('SoundCloud', function ($q, $rootScope) {
     var d = $q.defer();
     SC.stream('/tracks/' + remix.id, function(sound){
       d.resolve(sound);
-      $rootScope.$apply();
+      if(!$rootScope.$$phase) $rootScope.$apply();
     });
     return d.promise;
   }

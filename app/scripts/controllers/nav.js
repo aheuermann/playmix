@@ -65,13 +65,27 @@ app.controller('NavCtrl', function ($scope, $rootScope, Rdio) {
     }
   }
 
+  var formatTime = function(time) {
+    var seconds = Math.floor(time / 1000) % 60;
+    if (seconds < 10) {
+      seconds = "0" + seconds;
+    }
+    var minutes = Math.floor(time / 60000);
+    return minutes + ':' + seconds;
+  }
+
   $scope.play = function() {
     if ($scope.remix){
       console.log("remix", $scope.remix);
       SoundCloud.stream($scope.remix).then(function(sound){
         $scope.sound = sound;
         $scope.loading = false;
-        sound.play();
+        sound.play({
+          whileplaying: _.throttle(function() {
+            $rootScope.$apply(); //to update the sound percent...
+          }, 500)
+        });
+        console.log("sound", sound);
       });
     }
   }
