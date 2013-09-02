@@ -54,7 +54,10 @@ app.factory('Rdio', function ($q, $rootScope) {
   var getPlaylists = function(id) {
     var d = $q.defer();
     R.request({
-      method: "getPlaylists", 
+      method: "getPlaylists",
+      content: {
+        extras: "tracks,Track.playCount"
+      },
       success: function(response) {
         d.resolve(response.result);
         $rootScope.$apply();

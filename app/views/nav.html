@@ -12,7 +12,7 @@
     <div class="collapse navbar-collapse navbar-ex1-collapse">
       <ul class="nav navbar-nav">
         <li><a ng-href="#playlists">Playlists</a></li>
-        <li class="track" ng-if="{{track}}" ng-controller="PlayerCtrl">
+        <li class="track" ng-show="track" ng-controller="PlayerCtrl">
           <a ng-click="prev()"><i class="icon-step-backward"></i></a>
           <a ng-click="togglePlay()"><i ng-class="{false: 'icon-play', true: 'icon-pause'}[isPlaying()]"></i></a>
           <a ng-href="#s/{{track.key}}">

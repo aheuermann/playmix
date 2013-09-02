@@ -8,12 +8,20 @@ app.controller('NavCtrl', function ($scope, $rootScope, Rdio) {
       console.log("eerrrrrrr");
     });
   }
-  if ($rootScope.user){
-     $scope.track = Rdio.currentTrack();
-  }
 })
 .controller('PlayerCtrl', function($scope, $rootScope) {
   console.log("player");
+  
+
+  $rootScope.$watch('playlist', function(newVal, oldVal) {
+    console.log("newVal", newVal);
+    if (!_.isEmpty($rootScope.playlist)){
+      console.log("playlist", $rootScope.playlist);
+      $scope.track = $rootScope.playlist.tracks[0];
+    }
+  });
+
+
   SC.stream('/tracks/78167093', function(sound){
     $scope.playing = true;
     console.log("sound", sound);
@@ -22,6 +30,7 @@ app.controller('NavCtrl', function ($scope, $rootScope, Rdio) {
     //sound.play();
     $rootScope.$apply();
   });
+
   $scope.isPlaying = function() {
     if (!$scope.sound) return false;
     return $scope.sound.playState === 1 && !$scope.sound.paused;
@@ -37,7 +46,7 @@ app.controller('NavCtrl', function ($scope, $rootScope, Rdio) {
   $scope.togglePlay = function() {
     console.log("toggle");
     if ($scope.sound){
-      $scope.sound.togglePause();
+      //$scope.sound.togglePause();
     }else{
       console.log("no sound");
     }
