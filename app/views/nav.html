@@ -7,11 +7,11 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" ng-href="#">Mixly</a>
+      <a class="navbar-brand" ui-sref="app">Mixly</a>
     </div>
     <div class="collapse navbar-collapse navbar-ex1-collapse">
       <ul class="nav navbar-nav">
-        <li><a ng-href="#playlists">Playlists</a></li>
+        <li><a ui-sref="app.playlists">Playlists</a></li>
         <li class="track" ng-show="track" ng-controller="PlayerCtrl">
           <span class="controls" ng-hide="loading">
             <a ng-click="prev()"><i class="icon-step-backward"></i></a>
@@ -49,3 +49,4 @@
     </div>
   </div>
 </nav>
+<div class="container" ui-view ng-animate="{enter:'fade-enter'}"></div>

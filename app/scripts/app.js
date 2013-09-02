@@ -1,61 +1,58 @@
 'use strict';
 
-var app = angular.module('remixApp', ['ui.state']);
+var app = angular.module('remixApp', ['ui.router']);
 app.config(function ($urlRouterProvider, $locationProvider, $stateProvider) {
   //$locationProvider.html5Mode(true);
-  $urlRouterProvider.when("", "/");
+  $urlRouterProvider
+    .when("", "/")
+    .otherwise("/");
+    
   $stateProvider
-  .state("home", {
+  .state("app", {
     url: "/",
+    abstract: true,
     views: {
-      'nav': {
+      '': {
         templateUrl: 'views/nav.html',
         controller: "NavCtrl"
-      },
+      }
+    }
+  })
+  .state("app.home", {
+    url: "",
+    views: {
       '' : {
         templateUrl: 'views/home.html',
         controller: "HomeCtrl"
       }
-    },
+    }
   })
-  .state("playlists", {
-    url: "/playlists",
+  .state("app.playlists", {
+    url: "playlists",
     views: {
-      'nav': {
-        templateUrl: 'views/nav.html',
-        controller: "NavCtrl"
-      },
       '' : {
         templateUrl: 'views/playlists.list.html',
         controller: "PlaylistsCtrl"
       }
-    },
+    }
   })
-  .state("song", {
-    url: "/s/{id}",
+  .state("app.song", {
+    url: "s/{id}",
     views: {
-      'nav': {
-        templateUrl: 'views/nav.html',
-        controller: "NavCtrl"
-      },
       '' : {
         templateUrl: 'views/song.html',
         controller: "SongCtrl"
       }
-    },
+    }
   })
-  .state("playlist", {
-    url: "/p/{id}",
+  .state("app.playlist", {
+    url: "p/{id}",
     views: {
-      'nav': {
-        templateUrl: 'views/nav.html',
-        controller: "NavCtrl"
-      },
       '' : {
         templateUrl: 'views/playlist.html',
         controller: "PlaylistCtrl"
       }
-    },
+    }
   });
 })
 .run(function(Rdio, $rootScope){

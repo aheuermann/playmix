@@ -25,9 +25,8 @@
     <script src="bower_components/es5-shim/es5-shim.js"></script>
     <script src="bower_components/json3/lib/json3.min.js"></script>
   <![endif]-->
-  <nav ui-view="nav"></nav>
   <!-- Add your site or application content here -->
-  <div class="container" ui-view ng-animate="{enter:'fade-enter'}">
+  <div ui-view>
     <div> 
       <img src="/images/loading.gif">
     </div>
@@ -69,8 +68,8 @@
   <script src="bower_components/angular-resource/angular-resource.js"></script>
   <script src="bower_components/angular-cookies/angular-cookies.js"></script>
   <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
-  <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
   <script src="bower_components/underscore/underscore.js"></script>
+   <script src="vendor/scripts/angular-ui-router.js"></script>
   <!-- endbuild -->
 
   <!-- build:js({.tmp,app}) scripts/scripts.js -->
