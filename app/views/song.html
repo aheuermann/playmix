@@ -13,8 +13,10 @@
 <div class="row" ng-switch on="!!tracks">
   <div ng-switch-when="true">
     <div ng-repeat="track in tracks">
-      <img ng-src="{{track.artwork_url || 'http://placehold.it/100x100'}}">
-      {{track.title}}
+      <a href="{{track.permalink_url}}" target="_blank">
+        <img ng-src="{{track.artwork_url || 'http://placehold.it/100x100'}}">
+        {{track.title}}
+      </a>
     </div>
   </div>
   <div ng-switch-when="false">Mixin'...</div>
