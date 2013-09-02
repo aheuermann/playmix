@@ -56,7 +56,6 @@ app.factory('Rdio', function ($q, $rootScope) {
     R.request({
       method: "getPlaylists", 
       success: function(response) {
-        console.log(response);
         d.resolve(response.result);
         $rootScope.$apply();
       },

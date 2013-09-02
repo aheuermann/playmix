@@ -5,9 +5,7 @@ app.controller('SongCtrl', function ($scope, $rootScope, $stateParams, Rdio, Sou
     $scope.song = song;
     if (song) {
       SoundCloud.remix(song).then(function(tracks){
-        console.log(tracks.length);
-        $scope.tracks = _.reject(tracks, function(t){ console.log(t.track_type);return t.track_type === "original" });
-        console.log($scope.tracks);
+        $scope.tracks = _.reject(tracks, function(t){ return t.track_type === "original" });
       });
     }
   });

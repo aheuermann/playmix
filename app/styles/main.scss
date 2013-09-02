@@ -14,6 +14,10 @@ body {
   color: #333;
 }
 
+a {
+  cursor: pointer;
+}
+
 body.bootstrappin{
   background-color: #256cb7;
   color:#fafafa;
@@ -60,9 +64,6 @@ body.bootstrappin{
   background-color: #333;
 }
 
-.navbar .track span{
-  display:none;
-}
-.navbar .track:hover span{
+.navbar .track a{
   display:inline-block;
 }
