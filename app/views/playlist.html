@@ -1,19 +1,32 @@
 <div class="row" ng-switch on="!!playlist">
   <div ng-switch-when="true">
-    <div class="col-md-3">
-      <img ng-src="{{playlist.icon}}">
+    <div class="row">
+      <div class="col-xs-3">
+        <img class="img-responsive" ng-src="{{playlist.icon}}">
+      </div>
+      <div class="col-xs-9">
+        <h1>{{playlist.name}}</h1>
+        <h4>{{playlist.owner}}</h4>
+        <a class="btn btn-primary">
+          <i class="icon-play"></i> Mix it
+        </a>
+      </div>
     </div>
-    <div class="col-md-9">
-      <h1>{{playlist.name}}</h1>
-      <h4>{{playlist.owner}}</h4>
-    </div>
-    <div class="col-md-12">
-    <div ng-repeat="track in playlist.tracks">
-      <a href="#s/{{track.key}}">
-        <img ng-src="{{track.icon}}">
-        {{track.albumArtist}} - {{track.name}}
-      </a>
-    </div>
+    <div class="row tracks">
+      <div class="track" ng-repeat="track in playlist.tracks">
+        <div class="index">
+          <span>{{$index + 1}}</span>
+          <div class="play">
+            <a class="btn btn-primary" ng-click="play()">
+              <i class="icon-play"></i>
+            </a>
+          </div>
+        </div>
+        <a href="#s/{{track.key}}">
+          <img class="album"  ng-src="{{track.icon}}">
+          {{track.albumArtist}} - {{track.name}}
+        </a>
+      </div>
     </div>
   </div>
   <div ng-switch-when="false">Loading...</div>

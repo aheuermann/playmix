@@ -1,7 +1,55 @@
 $iconSpritePath: "../images/glyphicons-halflings.png";
 $iconWhiteSpritePath: "../images/glyphicons-halflings-white.png";
 
-@import "bootstrap-sass/lib/bootstrap";
+
+@import "_variables";
+@import "_mixins";
+
+// Reset
+@import "bootstrap-sass/lib/_normalize";
+@import "bootstrap-sass/lib/_print";
+
+// Core CSS
+@import "bootstrap-sass/lib/_scaffolding";
+@import "bootstrap-sass/lib/_type";
+@import "bootstrap-sass/lib/_code";
+@import "bootstrap-sass/lib/_grid";
+@import "bootstrap-sass/lib/_tables";
+@import "bootstrap-sass/lib/_forms";
+@import "bootstrap-sass/lib/_buttons";
+
+// Components
+@import "bootstrap-sass/lib/_component-animations";
+@import "bootstrap-sass/lib/_glyphicons";
+@import "bootstrap-sass/lib/_dropdowns";
+@import "bootstrap-sass/lib/_button-groups";
+@import "bootstrap-sass/lib/_input-groups";
+@import "bootstrap-sass/lib/_navs";
+@import "bootstrap-sass/lib/_navbar";
+@import "bootstrap-sass/lib/_breadcrumbs";
+@import "bootstrap-sass/lib/_pagination";
+@import "bootstrap-sass/lib/_pager";
+@import "bootstrap-sass/lib/_labels";
+@import "bootstrap-sass/lib/_badges";
+@import "bootstrap-sass/lib/_jumbotron";
+@import "bootstrap-sass/lib/_thumbnails";
+@import "bootstrap-sass/lib/_alerts";
+@import "bootstrap-sass/lib/_progress-bars";
+@import "bootstrap-sass/lib/_media";
+@import "bootstrap-sass/lib/_list-group";
+@import "bootstrap-sass/lib/_panels";
+@import "bootstrap-sass/lib/_wells";
+@import "bootstrap-sass/lib/_close";
+
+// Components w/ JavaScript
+@import "bootstrap-sass/lib/_modals";
+@import "bootstrap-sass/lib/_tooltip";
+@import "bootstrap-sass/lib/_popovers";
+@import "bootstrap-sass/lib/_carousel";
+
+// Utility classes
+@import "bootstrap-sass/lib/_utilities";
+@import "bootstrap-sass/lib/_responsive-utilities";
 
 /* Put your CSS here */
 html, body {
@@ -16,6 +64,14 @@ body {
 
 a {
   cursor: pointer;
+}
+
+.btn {
+  position:relative;
+  @include transition(all 0.2s linear);
+  &:active{
+    top:2px;
+  }
 }
 
 body.bootstrappin{
@@ -54,7 +110,7 @@ body.bootstrappin{
   overflow: hidden;
   border: 1px solid #555;
   border-radius: 4px;
-  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.15);
+  @include box-shadow(0 1px 0 rgba(255, 255, 255, 0.15));
   vertical-align: middle;
   margin-top:-5px;
 }
@@ -103,7 +159,9 @@ body.bootstrappin{
     display: inline-block;
   }
 }
-
+.tracks {
+  margin-top: 25px;
+}
 .track {
   $height: 50px;
   padding: 10px 0px;
@@ -118,7 +176,7 @@ body.bootstrappin{
     position:relative;
     display:inline-block;
     height:$height;
-    min-width: 25px;
+    min-width: 45px;
     padding-right:10px;
     color: $gray-light;
     span {
@@ -126,41 +184,20 @@ body.bootstrappin{
       text-align: right;
       display:inline-block;
       padding: 5px;
+      font-size: 20px;
     }
   }
   .play{
     display:none;
     position:absolute;
     top:0px;
-    left:-5px;
-    border-radius:50%;
-    width: 30px;
-    height: 30px;
-    color: $brand-primary;
-    background-color: #FFF;
-    //border: 1px solid $gray-lighter;
-    text-align: center;
-    line-height: 100%;
-    text-decoration: none;
-    box-shadow: 0px 0px 3px #AAA;
-    i {
-      margin: 0 auto;
-      display: inline-block;
-      font-size: 12px;
-      padding-top: 9px;
-      padding-left: 3px;
-    }
+    left:5px;
   }
   &:hover{
     .play{
       display: inline-block;
-      &:hover{
-        box-shadow: 0px 0px 8px #AAA;
-      }
     }
   }
-
-
 }
 
 
