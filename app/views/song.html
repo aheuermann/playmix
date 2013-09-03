@@ -5,19 +5,28 @@
     </div>
     <div class="col-md-9">
       <h1>{{song.name}}</h1>
-      <h4>{{song.albumArtist}}</h4>
+      <h4 class="text-muted">{{song.albumArtist}}</h4>
     </div>
   </div>
   <div ng-switch-when="false">Loading...</div>
 </div>
 <div class="row" ng-switch on="!!tracks">
-  <div ng-switch-when="true">
-    <div ng-repeat="track in tracks">
-      <a href="{{track.permalink_url}}" target="_blank">
-        <img ng-src="{{track.artwork_url || 'http://placehold.it/100x100'}}">
-        {{track.title}}
-      </a>
+  <div class="col-md-3" ng-switch-when="true">
+    <div class="track" ng-repeat="track in tracks">
+      <div ng-controller="TrackCtrl">
+        <div class="index">
+          <span>{{$index + 1}}</span>
+          <a class="play" ng-click="play()">
+            <i class="icon-play"></i>
+          </a>
+        </div>
+        <a href="{{track.permalink_url}}" target="_blank">
+          <img class="album" ng-src="{{track.artwork_url || song.icon}}">
+          {{track.title}}
+        </a>
+      </div>
     </div>
+    <div ng-hide="tracks">No remixes found :(</div>
   </div>
   <div ng-switch-when="false">Mixin'...</div>
 </div>

@@ -83,7 +83,11 @@ app.controller('NavCtrl', function ($scope, $rootScope, Rdio) {
         sound.play({
           whileplaying: _.throttle(function() {
             $rootScope.$apply(); //to update the sound percent...
-          }, 500)
+          }, 500),
+          onFinish: function() {
+            $scope.next();
+            $rootScope.$apply();
+          }
         });
         console.log("sound", sound);
       });

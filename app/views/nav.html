@@ -7,12 +7,12 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" ui-sref="app.home">Mixly</a>
+      <a class="navbar-brand" ui-sref="app.home">Playmix</a>
     </div>
     <div class="collapse navbar-collapse navbar-ex1-collapse">
       <ul class="nav navbar-nav">
         <li><a ui-sref="app.playlists">Playlists</a></li>
-        <li class="track" ng-show="track" ng-controller="PlayerCtrl">
+        <li class="playing-track" ng-show="track" ng-controller="PlayerCtrl">
           <span class="controls" ng-hide="loading">
             <a class="prev" ng-click="prev()"><i class="icon-step-backward"></i></a>
             <a class="playToggle" ng-click="togglePlay()"><i ng-class="{false: 'icon-play', true: 'icon-pause'}[isPlaying()]"></i></a>
@@ -53,3 +53,6 @@
   </div>
 </nav>
 <div class="container" ui-view ng-animate="{enter:'fade-enter'}"></div>
+<footer class="container">
+  Created by <a href="http://twitter.com/aheuermann">@aheuermann</a>. <a href="http://github.com/aheuermann/playmix">Fork my on Github</a>
+</footer>
