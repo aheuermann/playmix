@@ -1,14 +1,16 @@
-<div class="row" ng-switch on="!!playlists">
+<div ng-switch on="!!playlists">
   <div ng-switch-when="true">
     <div ng-repeat="playlist in playlists">
-      <div ng-controller="PlaylistItemCtrl">
-        <a ng-href="#p/{{playlist.key}}">
-          <img ng-src="{{playlist.icon}}">
-          {{playlist.name}}
-        </a>
-        <a class="btn btn-primary" ng-click="queue()">
-          <i class="icon-play"></i> Play
-        </a>
+      <div class="row" ng-controller="PlaylistItemCtrl">
+        <div class="col-xs-4">
+          <img class="img-responsive img-main" ng-src="{{playlist.icon}}">
+        </div>
+        <div class="col-xs-8">
+          <a ng-href="#p/{{playlist.key}}">{{playlist.name}}</a>
+          <a class="btn btn-primary" ng-click="queue()">
+            <i class="icon-play"></i> Play
+          </a>
+        </div>
       </div>
     </div>
   </div>

@@ -75,7 +75,7 @@ a {
 }
 
 body.bootstrappin{
-  background-color: #256cb7;
+  background: $brand-primary;
   color:#fafafa;
   .main{
     width: 100%;
@@ -119,9 +119,14 @@ body.bootstrappin{
   color: $gray-light;
 }
 
-.nav-divider{
-  height: 100px;
-  background-color: #333;
+.img-main{
+  @include box-shadow(0 1px 2px rgba(0,0,0,0.15));
+  background: #fff;
+  padding: 10px;
+  border: 1px solid $gray-lighter;
+  &.small{
+    padding: 5px;
+  }
 }
 
 .navbar .playing-track {
@@ -159,6 +164,7 @@ body.bootstrappin{
     display: inline-block;
   }
 }
+
 .tracks {
   margin-top: 25px;
 }

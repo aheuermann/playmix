@@ -1,7 +1,7 @@
 <div class="row" ng-switch on="!!song">
   <div ng-switch-when="true">
     <div class="col-xs-3">
-      <img class="img-responsive" ng-src="{{song.icon}}">
+      <img class="img-responsive img-main" ng-src="{{song.icon}}">
     </div>
     <div class="col-xs-9">
       <h1>{{song.name}}</h1>
@@ -24,7 +24,7 @@
           </div>
         </div>
         <a href="{{track.permalink_url}}" target="_blank">
-          <img class="album" ng-src="{{track.artwork_url || song.icon}}">
+          <img class="album img-main small" ng-src="{{track.artwork_url || song.icon}}">
           {{track.title}}
         </a>
       </div>

@@ -2,7 +2,7 @@
   <div ng-switch-when="true">
     <div class="row">
       <div class="col-xs-3">
-        <img class="img-responsive" ng-src="{{playlist.icon}}">
+        <img class="img-responsive img-main" ng-src="{{playlist.icon}}">
       </div>
       <div class="col-xs-9">
         <h1>{{playlist.name}}</h1>
@@ -23,7 +23,7 @@
           </div>
         </div>
         <a href="#s/{{track.key}}">
-          <img class="album"  ng-src="{{track.icon}}">
+          <img class="album img-main small"  ng-src="{{track.icon}}">
           {{track.albumArtist}} - {{track.name}}
         </a>
       </div>
