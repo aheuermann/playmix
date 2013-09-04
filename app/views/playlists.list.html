@@ -3,7 +3,9 @@
     <div ng-repeat="playlist in playlists">
       <div class="row" ng-controller="PlaylistItemCtrl">
         <div class="col-xs-4">
-          <img class="img-responsive img-main" ng-src="{{playlist.icon}}">
+          <a ng-href="#p/{{playlist.key}}">
+            <img class="img-responsive img-main" ng-src="{{playlist.icon}}">
+          </a>
         </div>
         <div class="col-xs-8">
           <a ng-href="#p/{{playlist.key}}">{{playlist.name}}</a>
