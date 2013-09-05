@@ -6,26 +6,28 @@
       </div>
       <div class="col-xs-9">
         <h1>{{playlist.name}}</h1>
-        <h4>{{playlist.owner}}</h4>
-        <a class="btn btn-primary">
+        <h4 class="text-muted">{{playlist.owner}}</h4>
+        <a class="btn btn-primary" ng-click="playPlaylist()">
           <i class="icon-play"></i> Mix it
         </a>
       </div>
     </div>
     <div class="row tracks">
       <div class="track" ng-repeat="track in playlist.tracks">
-        <div class="index">
-          <span>{{$index + 1}}</span>
-          <div class="play">
-            <a class="btn btn-primary" ng-click="play()">
-              <i class="icon-play"></i>
-            </a>
+        <div class="row" ng-controller="PlaylistItemCtrl">
+          <div class="index">
+            <span>{{$index + 1}}</span>
+            <div class="play">
+              <a class="btn btn-primary" ng-click="play()">
+                <i class="icon-play"></i>
+              </a>
+            </div>
           </div>
+          <a href="#s/{{track.key}}">
+            <img class="album img-main small"  ng-src="{{track.icon}}">
+            {{track.albumArtist}} - {{track.name}}
+          </a>
         </div>
-        <a href="#s/{{track.key}}">
-          <img class="album img-main small"  ng-src="{{track.icon}}">
-          {{track.albumArtist}} - {{track.name}}
-        </a>
       </div>
     </div>
   </div>

@@ -30,7 +30,6 @@ app.factory('Player', function ($q, $rootScope, SoundCloud) {
           }, 500),
           onFinish: function() {
             next();
-            console.log("finished");
           }
         });
       }
@@ -39,6 +38,7 @@ app.factory('Player', function ($q, $rootScope, SoundCloud) {
 
   var lookupAndPlay = function(tracks) {
     var results = [];
+    tracks = _.clone(tracks);
     var lookupTrack = function(items) {
       if(_.isEmpty(items)) return;
       SoundCloud.remix(items[0]).then(function(mixes){
@@ -77,7 +77,7 @@ app.factory('Player', function ($q, $rootScope, SoundCloud) {
     _play();
   }
 
-  var isPlaying = function() {
+  var isPlaying = function () {
     if (!$rootScope.sound) return false;
     return $rootScope.sound.playState === 1 && !$rootScope.sound.paused;
   }
@@ -88,7 +88,7 @@ app.factory('Player', function ($q, $rootScope, SoundCloud) {
     }
   }
 
-  var getTracks = function() {
+  var getTracks = function () {
     return _tracks;
   }
 

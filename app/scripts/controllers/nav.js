@@ -9,7 +9,7 @@ app.controller('NavCtrl', function ($scope, $rootScope, Rdio) {
     });
   }
 })
-.controller('PlayerCtrl', function($scope, $rootScope, SoundCloud, Player) {
+.controller('PlayerCtrl', function ($scope, Player) {
   $scope.isPlaying = Player.isPlaying;
 
   $scope.next = Player.next;
