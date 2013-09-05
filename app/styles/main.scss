@@ -66,14 +66,6 @@ a {
   cursor: pointer;
 }
 
-.btn {
-  position:relative;
-  @include transition(all 0.2s linear);
-  &:active{
-    top:2px;
-  }
-}
-
 body.bootstrappin{
   background: $brand-primary;
   color:#fafafa;
