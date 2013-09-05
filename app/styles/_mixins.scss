@@ -407,25 +407,26 @@
   color: $color;
   background-color: $background;
   border-color: $border;
-  @include box-shadow(0 3px 0px darken($border, 9%));
+  @include box-shadow(0 3px 0px darken($border, 3%));
 
   &:hover,
   &:focus,
   &:active,
   &.active {
     color: $color;
-    background-color: darken($background, 3%);
-        border-color: darken($border, 5%);
+    background-color: darken($background, 5%);
+        border-color: darken($border, 7%);
+    @include box-shadow(0 3px 0px darken($border, 20%));
   }
   .open & { &.dropdown-toggle {
     color: $color;
-    background-color: darken($background, 3%);
-        border-color: darken($border, 5%);
+    background-color: darken($background, 5%);
+        border-color: darken($border, 7%);
   } }
   &:active,
   &.active {
     background-image: none;
-    @include box-shadow(0 1px 0px darken($border, 9%));
+    @include box-shadow(0 1px 0px darken($border, 20%));
   }
   .open & { &.dropdown-toggle {
     background-image: none;
@@ -439,7 +440,7 @@
     &:active,
     &.active {
       background-color: $background;
-          border-color: $border
+          border-color: $border;
     }
   }
 }

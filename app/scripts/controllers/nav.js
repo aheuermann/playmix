@@ -9,88 +9,13 @@ app.controller('NavCtrl', function ($scope, $rootScope, Rdio) {
     });
   }
 })
-.controller('PlayerCtrl', function($scope, $rootScope, SoundCloud) {
-  $rootScope.$watch('playlist', function() {
-    if (!_.isEmpty($rootScope.playlist)){
-      $rootScope.trackIndex = 0;//Math.floor(Math.random()*$rootScope.playlist.tracks.length);
-      updateTrack();
-    }
-  });
+.controller('PlayerCtrl', function($scope, $rootScope, SoundCloud, Player) {
+  $scope.isPlaying = Player.isPlaying;
 
-  $rootScope.$watch('track', function(){
-    if($rootScope.track){
-      SoundCloud.remix($rootScope.track).then(function(tracks){
-        if(!_.isEmpty(tracks)){
-          $rootScope.remix = tracks[Math.floor(Math.random()*tracks.length)];
-        }else{
-          console.log("NO REMIXES FOUND");
-          $scope.next();
-        }
-      });
-    }
-  });
+  $scope.next = Player.next;
 
-  $rootScope.$watch('remix', function(){
-    if($rootScope.remix){
-      $scope.play();
-    }
-  });
+  $scope.prev = Player.prev;
 
-  var updateTrack = function(){
-    $scope.loading = true;
-    if($scope.sound) $scope.sound.stop();
-    $rootScope.track = $rootScope.playlist.tracks[$rootScope.trackIndex];
-  }
+  $scope.togglePlay = Player.togglePlay;
 
-  $scope.isPlaying = function() {
-    if (!$scope.sound) return false;
-    return $scope.sound.playState === 1 && !$scope.sound.paused;
-  }
-
-  $scope.next = function() {
-    $rootScope.trackIndex = ($rootScope.trackIndex + 1) % $rootScope.playlist.tracks.length;
-    updateTrack();
-  }
-
-  $scope.prev = function() {
-    $rootScope.trackIndex = ($rootScope.trackIndex - 1 + $rootScope.playlist.tracks.length) % $rootScope.playlist.tracks.length;
-    updateTrack();
-  }
-
-  $scope.togglePlay = function() {
-    if ($scope.sound){
-      $scope.sound.togglePause();
-    }else{
-      $scope.play();
-    }
-  }
-
-  var formatTime = function(time) {
-    var seconds = Math.floor(time / 1000) % 60;
-    if (seconds < 10) {
-      seconds = "0" + seconds;
-    }
-    var minutes = Math.floor(time / 60000);
-    return minutes + ':' + seconds;
-  }
-
-  $scope.play = function() {
-    if ($scope.remix){
-      console.log("remix", $scope.remix);
-      SoundCloud.stream($scope.remix).then(function(sound){
-        $scope.sound = sound;
-        $scope.loading = false;
-        sound.play({
-          whileplaying: _.throttle(function() {
-            $rootScope.$apply(); //to update the sound percent...
-          }, 500),
-          onFinish: function() {
-            $scope.next();
-            $rootScope.$apply();
-          }
-        });
-        console.log("sound", sound);
-      });
-    }
-  }
 });

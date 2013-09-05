@@ -21,10 +21,10 @@
           <span ng-show="loading">
             <img src="/images/loading.gif">
           </span>
-          <a ng-href="#s/{{track.key}}">
-            <img class="navbar-icon" ng-src="{{track.icon}}" />
-            <span class="track-name" title="{{track.albumArtist}} - {{track.name}}">
-              {{track.albumArtist}} - {{track.name}}
+          <a ng-href="#s/{{track.original.key}}">
+            <img class="navbar-icon" ng-src="{{track.mix.artwork_url || track.original.icon}}" />
+            <span class="track-name" title="{{track.mix.title}}">
+              {{track.mix.title}}
             </span>
           </a>
           <span ng-show="sound.position || sound.durationEstimate">

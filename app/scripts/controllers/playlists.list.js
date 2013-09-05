@@ -5,8 +5,8 @@ app.controller('PlaylistsCtrl', function ($scope, Rdio) {
       $scope.playlists = playlists.owned;
     });
 })
-.controller('PlaylistItemCtrl', function ($scope, $rootScope, Rdio) {
+.controller('PlaylistItemCtrl', function ($scope, Player) {
   $scope.queue = function(){
-    $rootScope.playlist = $scope.playlist;
+    Player.lookupAndPlay($scope.playlist.tracks);
   }
 });
