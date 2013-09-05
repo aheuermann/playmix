@@ -1,6 +1,6 @@
 'use strict';
 
-app.controller('SongCtrl', function ($scope, $rootScope, $stateParams, Rdio, SoundCloud) {
+app.controller('SongCtrl', function ($scope, $stateParams, Rdio, SoundCloud, Player) {
   Rdio.getSong($stateParams.id).then(function(song){
     $scope.song = song;
     if (song) {
@@ -9,10 +9,13 @@ app.controller('SongCtrl', function ($scope, $rootScope, $stateParams, Rdio, Sou
       });
     }
   });
+
+  $scope.playAll = function() {
+    Player.queue($scope.tracks, $scope.song);
+  }
 })
-app.controller('TrackCtrl', function ($scope, $rootScope) {
+app.controller('TrackCtrl', function ($scope, Player) {
   $scope.play = function() {
-    $rootScope.track = $scope.song;
-    $rootScope.remix = $scope.track;
+    Player.queue($scope.track, $scope.song);
   }
 });

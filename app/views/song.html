@@ -6,7 +6,7 @@
     <div class="col-xs-9">
       <h1>{{song.name}}</h1>
       <h4 class="text-muted">{{song.albumArtist}}</h4>
-      <a class="btn btn-primary"><i class="icon-play"></i> Play All Mixes</a>
+      <a class="btn btn-primary" ng-show="tracks" ng-click="playAll()"><i class="icon-play"></i> Play All Mixes</a>
     </div>
   </div>
   <div ng-switch-when="false">Loading...</div>

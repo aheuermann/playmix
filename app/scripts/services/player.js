@@ -48,7 +48,7 @@ app.factory('Player', function ($q, $rootScope, SoundCloud) {
             mix: mixes[Math.floor(Math.random()*mixes.length)]
           });
           if(results.length == 1) {
-            queue(results); //start playing if it exists
+            _queue(results); //start playing if it exists
           }
         }
         items.shift();
@@ -70,11 +70,20 @@ app.factory('Player', function ($q, $rootScope, SoundCloud) {
     _play();
   }
 
-  var queue = function(tracks) {
-    if (!_.isArray(tracks)) tracks = [tracks];
+  var _queue = function(tracks) {
     _tracks = tracks;
     _index = 0;
     _play();
+  }
+
+  var queue = function(tracks, original) {
+    if (!_.isArray(tracks)) tracks = [tracks];
+    if(!tracks[0].mix){
+      tracks = _.map(tracks, function(t){
+        return {mix:t, original:original};
+      });
+    }
+    _queue(tracks);
   }
 
   var isPlaying = function () {
