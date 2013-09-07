@@ -13,9 +13,8 @@ app.controller('SongCtrl', function ($scope, $stateParams, Rdio, SoundCloud, Pla
   $scope.playAll = function() {
     Player.queue($scope.tracks, $scope.song);
   }
-})
-app.controller('TrackCtrl', function ($scope, Player) {
-  $scope.play = function() {
-    Player.queue($scope.track, $scope.song);
+
+  $scope.playTrack = function(track) {
+    Player.queue(track, $scope.song);
   }
 });
