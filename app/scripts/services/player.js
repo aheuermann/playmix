@@ -1,6 +1,6 @@
 'use strict';
 
-app.factory('Player', function ($q, $rootScope, SoundCloud) {
+app.factory('Player', function ($q, $rootScope, SoundCloud, Alert) {
   var _index = 0
     , _tracks = null
     , _track = null
@@ -19,9 +19,10 @@ app.factory('Player', function ($q, $rootScope, SoundCloud) {
   var _play = function(){
     _cancelCurrent();
     _track = _tracks[_index];
+    Alert.info('Buffering...');
     _stream = SoundCloud.stream(_track.mix);
     _stream.then(function(sound){
-      $rootScope.tracksLoading = false;
+      Alert.clear();
       if(sound){
         $rootScope.track = _track;
         $rootScope.sound = sound;
@@ -38,9 +39,7 @@ app.factory('Player', function ($q, $rootScope, SoundCloud) {
   }
 
   var lookupAndPlay = function(tracks) {
-    console.log("duuuu");
-    $rootScope.tracksLoading = true;
-    console.log("loading", $rootScope.tracksLoading);
+    Alert.info('Remixin\'...');
     var results = [];
     tracks = _.clone(tracks);
     var lookupTrack = function(items) {
@@ -81,7 +80,6 @@ app.factory('Player', function ($q, $rootScope, SoundCloud) {
   }
 
   var queue = function(tracks, original) {
-    $rootScope.tracksLoading = true;
     if (!_.isArray(tracks)) tracks = [tracks];
     if(!tracks[0].mix){
       tracks = _.map(tracks, function(t){
