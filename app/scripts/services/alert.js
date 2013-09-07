@@ -13,19 +13,19 @@ app.factory('Alert', function ($rootScope, $timeout) {
   }
 
   var error = function(message){
-    _alert('danger', message, 5000);
+    _alert('danger', message);
   }
 
   var info = function(message){
-    _alert('info', message, 5000);
+    _alert('info', message);
   }
 
   var success = function(message){
-    _alert('success', message, 5000);
+    _alert('success', message);
   }
 
   var warning = function(message){
-    _alert('warning', message, 5000);
+    _alert('warning', message);
   }
 
   var clear = function() {

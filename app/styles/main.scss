@@ -78,6 +78,34 @@ body.bootstrappin{
   }
 }
 
+::-moz-selection {
+    background: #D5FE7A;
+    text-shadow: none;
+}
+
+::selection {
+    background: #D5FE7A;
+    text-shadow: none;
+}
+
+.fade-hide, .fade-show{
+  @include transition(all cubic-bezier(0.250, 0.460, 0.450, 0.940) .75s);
+}
+.fade-hide{
+  opacity:1;
+}
+.fade-hide.fade-hide-active{
+  opacity:0;
+}
+
+.fade-show {
+  opacity:0;
+}
+.fade-show.fade-show-active {
+  opacity:1;
+}
+
+
 .hero-unit {
   margin: 50px auto 0 auto;
   width: 300px;
@@ -185,6 +213,14 @@ body.bootstrappin{
   &.active {
     @include transition(top cubic-bezier(0.250, 0.460, 0.450, 0.940) .2s);
     top:55px;
+  }
+}
+
+.navbar-fixed-bottom{
+  @include transition(bottom cubic-bezier(0.250, 0.460, 0.450, 0.940) .75s);
+  bottom:-60px;
+  &.active{
+    bottom:0;
   }
 }
 
