@@ -21,6 +21,7 @@ app.factory('Player', function ($q, $rootScope, SoundCloud) {
     _track = _tracks[_index];
     _stream = SoundCloud.stream(_track.mix);
     _stream.then(function(sound){
+      $rootScope.tracksLoading = false;
       if(sound){
         $rootScope.track = _track;
         $rootScope.sound = sound;
@@ -37,6 +38,9 @@ app.factory('Player', function ($q, $rootScope, SoundCloud) {
   }
 
   var lookupAndPlay = function(tracks) {
+    console.log("duuuu");
+    $rootScope.tracksLoading = true;
+    console.log("loading", $rootScope.tracksLoading);
     var results = [];
     tracks = _.clone(tracks);
     var lookupTrack = function(items) {
@@ -77,6 +81,7 @@ app.factory('Player', function ($q, $rootScope, SoundCloud) {
   }
 
   var queue = function(tracks, original) {
+    $rootScope.tracksLoading = true;
     if (!_.isArray(tracks)) tracks = [tracks];
     if(!tracks[0].mix){
       tracks = _.map(tracks, function(t){

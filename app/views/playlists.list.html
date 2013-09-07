@@ -1,19 +1,19 @@
 <div ng-switch on="!!playlists">
   <div ng-switch-when="true">
     <div ng-repeat="playlist in playlists">
-      <div class="row">
-        <div class="col-xs-4">
-          <a ng-href="#p/{{playlist.key}}">
-            <img class="img-responsive img-main" ng-src="{{playlist.icon}}">
-          </a>
-        </div>
-        <div class="col-xs-8">
-          <a ng-href="#p/{{playlist.key}}">{{playlist.name}}</a>
-          <a class="btn btn-primary" ng-click="queue(playlist)">
-            <i class="icon-play"></i> Play
-          </a>
-        </div>
-      </div>
+      <figure class="playlist effeckt-caption" data-effeckt-type="quarter-slide-up">
+        <a ng-href="#p/{{playlist.key}}">
+          <img class="img-responsive img-main" ng-src="{{playlist.icon}}">
+        </a>
+        <figcaption>
+          <div class="effeckt-figcaption-wrap">
+            <h5><a ng-href="#p/{{playlist.key}}">{{playlist.name}}</a></h5>
+            <a class="btn btn-block btn-primary" ng-click="queue(playlist)">
+              <i class="icon-play"></i> Play
+            </a>
+          </div>
+        </figcaption>
+      </figure>
     </div>
   </div>
   <div ng-switch-when="false">Loading...</div>

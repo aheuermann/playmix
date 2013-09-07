@@ -11,15 +11,15 @@
     </div>
     <div class="collapse navbar-collapse navbar-ex1-collapse">
       <ul class="nav navbar-nav">
-        <li><a ui-sref="app.playlists">Playlists</a></li>
+        <li><a ui-sref="app.playlists">Playlists</a> <div style="color:white;"></div></li>
+        <li ng-show="tracksLoading">
+          <img src="/images/loading.gif">
+        </li>
         <li class="playing-track" ng-show="track" ng-controller="PlayerCtrl">
-          <span class="controls" ng-hide="loading">
+          <span class="controls" ng-hide="tracksLoading">
             <a class="prev" ng-click="prev()"><i class="icon-step-backward"></i></a>
             <a class="playToggle" ng-click="togglePlay()"><i ng-class="{false: 'icon-play', true: 'icon-pause'}[isPlaying()]"></i></a>
             <a class="next" ng-click="next()"><i class="icon-step-forward"></i></a>
-          </span>
-          <span ng-show="loading">
-            <img src="/images/loading.gif">
           </span>
           <a ng-href="#s/{{track.original.key}}">
             <img class="navbar-icon" ng-src="{{track.mix.artwork_url || track.original.icon}}" />

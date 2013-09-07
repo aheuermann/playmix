@@ -8,7 +8,7 @@ app.controller('PlaylistCtrl', function ($scope, $stateParams, Rdio, Player) {
   $scope.playPlaylist = function () {
     Player.lookupAndPlay($scope.playlist.tracks);
   }
-  
+
   $scope.playTrack = function(track){
     Player.lookupAndPlay(track);
   }
