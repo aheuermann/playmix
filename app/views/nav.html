@@ -11,7 +11,7 @@
       <a class="navbar-brand" ui-sref="app.home">Playmix</a>
     </div>
     <div class="collapse navbar-collapse navbar-ex1-collapse">
-      <ul class="nav navbar-nav">
+      <ul class="nav navbar-nav" ng-show="user">
         <li><a ui-sref="app.playlists">Playlists</a> <div style="color:white;"></div></li>
         <li ng-show="tracksLoading">
           <img src="/images/loading.gif">
