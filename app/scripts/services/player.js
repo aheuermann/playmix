@@ -39,19 +39,30 @@ app.factory('Player', function ($q, $rootScope, SoundCloud, Alert) {
   }
 
   var lookupAndPlay = function(tracks) {
-    Alert.info('Remixin\'...');
     var results = [];
-    tracks = _.clone(tracks);
+    var single = false;
+    
+    Alert.info('Remixin\'...');
     var lookupTrack = function(items) {
       if(_.isEmpty(items)) return;
       SoundCloud.remix(items[0]).then(function(mixes){
         if(!_.isEmpty(mixes)){
-          results.push({
-            original: items[0],
-            mix: mixes[Math.floor(Math.random()*mixes.length)]
-          });
-          if(results.length == 1) {
-            _queue(results); //start playing if it exists
+          if(single){
+            _.each(mixes, function(mix){
+              results.push({
+                original: items[0],
+                mix: mix
+              });
+            });
+            _queue(results);
+          }else{
+            results.push({
+              original: items[0],
+              mix: mixes[Math.floor(Math.random()*mixes.length)]
+            });
+            if(results.length == 1) {
+              _queue(results); //start playing if it exists
+            }
           }
         }
         items.shift();
@@ -59,7 +70,12 @@ app.factory('Player', function ($q, $rootScope, SoundCloud, Alert) {
       });
     }
     _cancelCurrent();
-    if (!_.isArray(tracks)) tracks = [tracks];
+    if (!_.isArray(tracks)){
+      tracks = [tracks];
+      single = true;
+    }else{
+       tracks = _.clone(tracks);
+    }
     lookupTrack(tracks);
   }
 
