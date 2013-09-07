@@ -1,9 +1,7 @@
 'use strict';
 
-app.controller('PlaylistCtrl', function ($scope, $stateParams, Rdio, Player) {
-  Rdio.getPlaylist($stateParams.id).then(function(playlist){
-    $scope.playlist = playlist;
-  });
+app.controller('PlaylistCtrl', function ($scope, $stateParams, playlist, Player) {
+  $scope.playlist = playlist
 
   $scope.playPlaylist = function () {
     Player.lookupAndPlay($scope.playlist.tracks);

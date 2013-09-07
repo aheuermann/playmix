@@ -1,20 +1,14 @@
 'use strict';
 
-app.controller('SongCtrl', function ($scope, $stateParams, Rdio, SoundCloud, Player) {
-  Rdio.getSong($stateParams.id).then(function(song){
-    $scope.song = song;
-    if (song) {
-      SoundCloud.remix(song).then(function(tracks){
-        $scope.tracks = tracks;
-      });
-    }
-  });
+app.controller('SongCtrl', function ($scope, $stateParams, data, Player) {
+  $scope.song = data.song;
+  $scope.tracks = data.tracks;
 
   $scope.playAll = function() {
-    Player.queue($scope.tracks, $scope.song);
+    Player.queue(data.tracks, data.song);
   }
 
   $scope.playTrack = function(track) {
-    Player.queue(track, $scope.song);
+    Player.queue(track, data.song);
   }
 });

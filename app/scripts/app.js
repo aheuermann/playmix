@@ -34,6 +34,11 @@ app.config(function ($urlRouterProvider, $locationProvider, $stateProvider) {
         templateUrl: 'views/playlists.list.html',
         controller: "PlaylistsCtrl"
       }
+    },
+    resolve: {
+      playlists: function(Rdio) {
+        return Rdio.getPlaylists();
+      }
     }
   })
   .state("app.song", {
@@ -42,6 +47,23 @@ app.config(function ($urlRouterProvider, $locationProvider, $stateProvider) {
       '' : {
         templateUrl: 'views/song.html',
         controller: "SongCtrl"
+      }
+    },
+    resolve: {
+      data: function($q, $stateParams, Rdio, SoundCloud) {
+        var d = $q.defer();
+        Rdio.getSong($stateParams.id).then(function(song){
+          var rval = {song: song};
+          if (song) {
+            SoundCloud.remix(song).then(function(tracks){
+              rval.tracks = tracks;
+              d.resolve(rval)
+            });
+          }else{
+            d.reject("Song not found");
+          }
+        });
+        return d.promise;
       }
     }
   })
@@ -52,6 +74,11 @@ app.config(function ($urlRouterProvider, $locationProvider, $stateProvider) {
         templateUrl: 'views/playlist.html',
         controller: "PlaylistCtrl"
       }
+    },
+    resolve: {
+      playlist: function($stateParams, Rdio) {
+        return Rdio.getPlaylist($stateParams.id);
+      }
     }
   });
 })
@@ -60,4 +87,19 @@ app.config(function ($urlRouterProvider, $locationProvider, $stateProvider) {
     $rootScope.user = Rdio.currentUser();
     $rootScope.$apply();
   });
+})
+.run(function($rootScope, Alert){
+  $rootScope.$on("$stateChangeStart", function (event, next, current){
+    Alert.info("Loading...");
+  });
+
+  $rootScope.$on("$stateChangeSuccess", function (event, current, previous){
+    $(document.body).removeClass("bootstrappin");
+    Alert.clear();
+  });
+  
+  $rootScope.$on("$stateChangeError", function (event, current, previous, rejection){
+    Alert.error("Error: #{rejection}");
+  });
+
 });
