@@ -21,7 +21,7 @@
             <a class="playToggle" ng-click="togglePlay()"><i ng-class="{false: 'icon-play', true: 'icon-pause'}[isPlaying()]"></i></a>
             <a class="next" ng-click="next()"><i class="icon-step-forward"></i></a>
           </span>
-          <a ng-href="#s/{{track.original.key}}">
+          <a ng-href="{{track.mix.permalink_url}}" target="_blank">
             <img class="navbar-icon" ng-src="{{track.mix.artwork_url || track.original.icon}}" />
             <span class="track-name" title="{{track.mix.title}}">
               {{track.mix.title}}
