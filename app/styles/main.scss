@@ -150,22 +150,28 @@ a {
     padding: 5px;
   }
 }
-
-.playlist{
-  figcaption{
-    h5 {
-      font-size: 20px;
-    }
-    background-color: rgba(0,0,0,0.75);
-    color: #FFF;
-    box-shadow: 0 1px 2px rgba(0,0,0,0.15);
-    padding: 5px 5px 10px 5px;
-    border: 1px solid $gray-lighter;
-    a {
-      color: #fff;
+.playlists{
+  $playlist-item-padding: 15px;
+  margin-left: (-$playlist-item-padding);
+  .playlist{
+    padding-left: $playlist-item-padding;
+    padding-bottom: $playlist-item-padding;
+    figcaption{
+      h5 {
+        font-size: 20px;
+      }
+      background-color: rgba(0,0,0,0.75);
+      color: #FFF;
+      box-shadow: 0 1px 2px rgba(0,0,0,0.15);
+      padding: 5px 5px 10px 5px;
+      border: 1px solid $gray-lighter;
+      a {
+        color: #fff;
+      }
     }
   }
 }
+
 
 .navbar .playing-track {
   color: $gray-lighter;
