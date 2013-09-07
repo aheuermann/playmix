@@ -60,22 +60,24 @@ body {
   background: #fafafa;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   color: #333;
+  &.bootstrappin{
+    background: $brand-primary;
+    color:#fafafa;
+    .main{
+      width: 100%;
+      > div{
+        position:absolute;
+        left: 50%;
+      }
+    }
+  }
+  &.player-active{
+    padding-bottom: 80px;
+  }
 }
 
 a {
   cursor: pointer;
-}
-
-body.bootstrappin{
-  background: $brand-primary;
-  color:#fafafa;
-  .main{
-    width: 100%;
-    > div{
-      position:absolute;
-      left: 50%;
-    }
-  }
 }
 
 ::-moz-selection {
