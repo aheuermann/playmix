@@ -174,14 +174,16 @@ body.bootstrappin{
 }
 
 .globalAlert {
-  @include transition(top cubic-bezier(0.250, 0.460, 0.450, 0.940) 1.5s);
+  @include transition(top cubic-bezier(0.250, 0.460, 0.450, 0.940) 1.0s);
   position:absolute;
   left: 50%;
   top: 0;
   @include border-bottom-radius(5px);
   @include border-top-radius(0px);
+  z-index: 1;
 
   &.active {
+    @include transition(top cubic-bezier(0.250, 0.460, 0.450, 0.940) .2s);
     top:55px;
   }
 }
