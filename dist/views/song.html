@@ -1,0 +1,35 @@
+<div class="row" ng-switch="" on="!!song">
+  <div ng-switch-when="true">
+    <div class="col-xs-3">
+      <img class="img-responsive img-main" ng-src="{{song.icon}}">
+    </div>
+    <div class="col-xs-9">
+      <h1>{{song.name}}</h1>
+      <h4 class="text-muted">{{song.albumArtist}}</h4>
+      <a class="btn btn-primary" ng-show="tracks" ng-click="playAll()"><i class="icon-play"></i> Play All Mixes</a>
+    </div>
+  </div>
+  <div ng-switch-when="false">Loading...</div>
+</div>
+<div class="row" ng-switch="" on="!!tracks">
+  <div class="col-xs-12 tracks" ng-switch-when="true">
+    <div class="track" ng-repeat="track in tracks">
+      <div>
+        <div class="index">
+          <span>{{$index + 1}}</span>
+          <div class="play">
+            <a class="btn btn-primary" ng-click="playTrack(track)">
+              <i class="icon-play"></i>
+            </a>
+          </div>
+        </div>
+        <a href="{{track.permalink_url}}" target="_blank">
+          <img class="album img-main small" ng-src="{{track.artwork_url || song.icon}}">
+          {{track.title}}
+        </a>
+      </div>
+    </div>
+    <div ng-hide="tracks">No remixes found :(</div>
+  </div>
+  <div ng-switch-when="false">Mixin'...</div>
+</div>
