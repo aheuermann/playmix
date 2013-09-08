@@ -1,14 +1,21 @@
 'use strict';
 
 app.factory('SoundCloud', function ($q, $rootScope) {
+  var _filter  = function(tracks) {
+    return _.filter(tracks, function(track){
+      return track.streamable;
+    });
+  }
+
   var remix = function(song){
     var d = $q.defer();
     SC.get('/tracks', {
         q: song.albumArtist + " " + song.name + " remix",
         filter: 'streamable',
-        order: 'hotness'
+        order: 'hotness',
+        limit: 50
       }, function(tracks) {
-        d.resolve(tracks);
+        d.resolve(_filter(tracks));
         $rootScope.$apply();
     });
     return d.promise;
