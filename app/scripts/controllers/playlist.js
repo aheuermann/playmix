@@ -10,4 +10,11 @@ app.controller('PlaylistCtrl', function ($scope, $stateParams, playlist, Player)
   $scope.playTrack = function(track){
     Player.lookupAndPlay(track);
   }
+})
+.factory('playlist', function (Rdio) {
+  return {
+    get: function(id) {
+      return Rdio.getPlaylist(id);
+    }
+  }
 });

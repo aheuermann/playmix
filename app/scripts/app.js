@@ -36,9 +36,7 @@ app.config(function ($urlRouterProvider, $locationProvider, $stateProvider) {
       }
     },
     resolve: {
-      playlists: function(Rdio) {
-        return Rdio.getPlaylists();
-      }
+      playlists: 'playlists'
     }
   })
   .state("app.song", {
@@ -50,21 +48,9 @@ app.config(function ($urlRouterProvider, $locationProvider, $stateProvider) {
       }
     },
     resolve: {
-      data: function($q, $stateParams, Rdio, SoundCloud) {
-        var d = $q.defer();
-        Rdio.getSong($stateParams.id).then(function(song){
-          var rval = {song: song};
-          if (song) {
-            SoundCloud.remix(song).then(function(tracks){
-              rval.tracks = tracks;
-              d.resolve(rval)
-            });
-          }else{
-            d.reject("Song not found");
-          }
-        });
-        return d.promise;
-      }
+      songData: ['$stateParams', 'songData', function($stateParams, songData) {
+        return songData.get($stateParams.id);
+      }]
     }
   })
   .state("app.playlist", {
@@ -76,9 +62,9 @@ app.config(function ($urlRouterProvider, $locationProvider, $stateProvider) {
       }
     },
     resolve: {
-      playlist: function($stateParams, Rdio) {
-        return Rdio.getPlaylist($stateParams.id);
-      }
+      playlist: ['$stateParams', 'playlist', function($stateParams, playlist) {
+        return playlist.get($stateParams.id);
+      }]
     }
   });
 })
