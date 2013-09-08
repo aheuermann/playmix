@@ -283,6 +283,13 @@ module.exports = function (grunt) {
           src: [
             'generated/*'
           ]
+        }, {
+          expand: true,
+          cwd: '<%= yeoman.app %>/bower_components/font-awesome/font/',
+          dest: '<%= yeoman.dist %>/font',
+          src: [
+            '*'
+          ]
         }]
       },
       styles: {
