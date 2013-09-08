@@ -30,7 +30,7 @@ app.factory('Player', function ($q, $rootScope, SoundCloud, Alert) {
           whileplaying: _.throttle(function() {
             $rootScope.$apply(); //to update the sound percent...
           }, 500),
-          onFinish: function() {
+          onfinish: function() {
             next();
           }
         });
