@@ -1,0 +1,59 @@
+<div ng-class="{active: alert == true}" class="globalAlert alert {{alertType}}" ng-cloak="">{{alertMessage}}</div>
+<nav class="navbar navbar-fixed-top navbar-inverse" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex5-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" ui-sref="app.home">Playmix</a>
+    </div>
+    <div class="collapse navbar-collapse navbar-ex1-collapse">
+      <ul class="nav navbar-nav" ng-show="user">
+        <li><a ui-sref="app.playlists">Playlists</a> <div style="color:white"></div></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li class="dropdown" ng-show="user" ng-animate="{show: 'fade', hide: 'fade'}" style="display:none">
+          <a ui-sref="app.home" class="profile-link"> 
+            <span class="avatar">
+              <img class="navbar-icon" ng-src="{{user.icon}}"> 
+              {{user.vanityName}}
+            </span>
+          </a>
+        </li>
+        <li class="login" ng-hide="user" style="display:none">
+          <button class="btn btn-primary navbar-btn" ng-click="signIn()">Sign In with Rdio</button>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<div class="container" ng-animate="{enter: 'fade-show'}" ui-view=""></div>
+<footer class="container">
+  Created by <a href="http://twitter.com/aheuermann">@aheuermann</a>. <a href="http://github.com/aheuermann/playmix">Fork me on Github</a>
+</footer>
+
+<div class="navbar navbar-fixed-bottom navbar-inverse" ng-class="{active: track}">
+  <div class="container">
+    <ul class="nav navbar-nav">
+      <li class="playing-track" ng-controller="PlayerCtrl">
+        <span class="controls" ng-hide="tracksLoading">
+          <a class="prev" ng-click="prev()"><i class="icon-step-backward"></i></a>
+          <a class="playToggle" ng-click="togglePlay()"><i ng-class="{false: 'icon-play', true: 'icon-pause'}[isPlaying()]"></i></a>
+          <a class="next" ng-click="next()"><i class="icon-step-forward"></i></a>
+        </span>
+        <a ng-href="{{track.mix.permalink_url}}" target="_blank">
+          <img class="navbar-icon" ng-src="{{track.mix.artwork_url || track.original.icon}}">
+          <span class="track-name" title="{{track.mix.title}}">
+            {{track.mix.title}}
+          </span>
+        </a>
+        <span ng-show="sound.position || sound.durationEstimate">
+          {{sound.position | date:'mm:ss'}} - {{sound.durationEstimate | date:'mm:ss'}}
+        </span>
+      </li>
+    </ul>
+  </div>
+</div>
