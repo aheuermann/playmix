@@ -46,6 +46,6 @@
   "scripts": {
     "test": "grunt test",
     "start" : "grunt",
-    "deploy" : "grunt build && git add dist/ && git commit -m 'Updating gh-pages' && git subtree push --prefix dist origin gh-pages"
+    "deploy" : "grunt build && git add -u dist/ && git commit -m 'Updating gh-pages' && git subtree push --prefix dist origin gh-pages"
   }
 }
