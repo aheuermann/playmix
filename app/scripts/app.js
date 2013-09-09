@@ -85,7 +85,7 @@ app.config(function ($urlRouterProvider, $locationProvider, $stateProvider) {
   });
   
   $rootScope.$on("$stateChangeError", function (event, current, previous, rejection){
-    Alert.error("Error: #{rejection}");
+    Alert.error("Error, please refresh and try again");
   });
 
 });
