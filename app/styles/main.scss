@@ -259,10 +259,7 @@ a {
 .track {
   $height: 50px;
   padding: 10px 0px;
-  border-bottom:1px solid $gray-lighter;
-  &:first-child{
-    border-top:1px solid $gray-lighter;
-  }
+  border-top:1px solid $gray-lighter;
   .album {
     width:$height;
   }
@@ -296,7 +293,8 @@ a {
 
 
 footer{
-  padding: 5px 0px;
+  border-top: 1px solid $gray-lighter;
+  padding: 25px 0px 40px 0px;
   margin: 10px 0px;
   div, img {
     display: inline-block;
