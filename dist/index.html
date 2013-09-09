@@ -13,7 +13,7 @@
 
   <link rel="stylesheet" href="styles/420d0a3b.vendor.css">
 
-  <link rel="stylesheet" href="styles/ad1c6533.main.css">
+  <link rel="stylesheet" href="styles/3068bcf2.main.css">
 </head>
 <body class="bootstrappin" ng-class="{'player-active': track}">
   <!--[if lt IE 7]>
@@ -26,34 +26,48 @@
   <![endif]-->
   <!-- Add your site or application content here -->
   <div class="main" ui-view="">
-    <div> 
-      <img src="images/a067614f.loading.gif">
+    <div>
+      <div class="spinner"></div>
+      <div class="logos">
+        <img src="images/511ba38c.rdio_white.png" class="logo">
+        <img src="images/225ffc4a.soundcloud_white.png" class="logo">
+      </div>
     </div>
   </div>
 
-  <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
    <script>
      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
-     ga('create', 'UA-XXXXX-X');
+     ga('create', 'UA-43809281-1');
      ga('send', 'pageview');
   </script>
   
   <script src="//www.rdio.com/api/api.js?client_id=I-48wvWPfKWr6XBqFjRXlg"></script>
   <script src="http://connect.soundcloud.com/sdk.js"></script>
 
-  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-  <script src="bower_components/angular/angular.js"></script>
-
-  <script src="scripts/491c175a.plugins.js"></script>
-
-  <script src="scripts/24070d2f.modules.js"></script>
+  <script src="scripts/a74a593e.vendor.js"></script>
 
   <script src="scripts/b1babf38.scripts.js"></script>
   <script type="text/javascript">
+    var opts = {
+      lines: 30, // The number of lines to draw
+      length: 12, // The length of each line
+      width: 1, // The line thickness
+      radius: 10, // The radius of the inner circle
+      corners: 1, // Corner roundness (0..1)
+      rotate: 0, // The rotation offset
+      direction: 1, // 1: clockwise, -1: counterclockwise
+      color: '#e0e0e0', // #rgb or #rrggbb or array of colors
+      speed: 1, // Rounds per second
+      trail: 75, // Afterglow percentage
+      shadow: false, // Whether to render a shadow
+      hwaccel: false, // Whether to use hardware acceleration
+    };
+    console.log($('.loading').length);
+    var spinner = new Spinner(opts).spin($('.spinner')[0]);
     // initialize sound cloud
     SC.initialize({
       client_id: '2c56bfb6e6b622cf4296e8f4635fba00'
