@@ -61,15 +61,26 @@ body {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   color: #333;
   &.bootstrappin{
-    background: $brand-primary;
+    background: darken($brand-primary, 25%);
     color:#fafafa;
     .main{
       width: 100%;
       > div{
-        position:absolute;
+        position:fixed;
         left: 50%;
+        top: 35%;
+        width: 370px;
+        margin-left: -180px;
+        .logos{
+          margin-top: 50px;
+          .logo{
+            width: 150px;
+            margin: 0px 15px;
+          }
+        }
       }
     }
+
   }
   &.player-active{
     padding-bottom: 80px;
@@ -285,6 +296,18 @@ a {
 footer{
   padding: 5px 0px;
   margin: 10px 0px;
+  div, img {
+    display: inline-block;
+    vertical-align: bottom;
+    margin-right: 10px;
+  }
+  .rdio{
+    height: 25px;
+  }
+  .soundcloud{
+    height: 32px;
+    margin-bottom: -5px;
+  }
 }
 
 

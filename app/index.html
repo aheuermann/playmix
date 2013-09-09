@@ -31,8 +31,12 @@
   <![endif]-->
   <!-- Add your site or application content here -->
   <div class="main" ui-view>
-    <div> 
-      <img src="images/loading.gif">
+    <div>
+      <div class="spinner"></div>
+      <div class="logos">
+        <img src="images/rdio_white.png" class="logo">
+        <img src="images/soundcloud_white.png" class="logo">
+      </div>
     </div>
   </div>
 
@@ -49,10 +53,9 @@
   <script src="//www.rdio.com/api/api.js?client_id=I-48wvWPfKWr6XBqFjRXlg"></script>
   <script src="http://connect.soundcloud.com/sdk.js"></script>
 
+  <!-- build:js scripts/vendor.js -->
   <script src="bower_components/jquery/jquery.js"></script>
   <script src="bower_components/angular/angular.js"></script>
-
-  <!-- build:js scripts/plugins.js -->
   <script src="bower_components/bootstrap-sass/js/affix.js"></script>
   <script src="bower_components/bootstrap-sass/js/alert.js"></script>
   <script src="bower_components/bootstrap-sass/js/dropdown.js"></script>
@@ -65,14 +68,13 @@
   <script src="bower_components/bootstrap-sass/js/scrollspy.js"></script>
   <script src="bower_components/bootstrap-sass/js/collapse.js"></script>
   <script src="bower_components/bootstrap-sass/js/tab.js"></script>
-  <!-- endbuild -->
-
-  <!-- build:js scripts/modules.js -->
+  
   <script src="bower_components/angular-resource/angular-resource.js"></script>
   <script src="bower_components/angular-cookies/angular-cookies.js"></script>
   <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
   <script src="bower_components/underscore/underscore.js"></script>
   <script src="vendor/scripts/angular-ui-router.js"></script>
+   <script src="vendor/scripts/spin.js"></script>
   <!-- endbuild -->
 
   <!-- build:js({.tmp,app}) scripts/scripts.js -->
@@ -89,6 +91,22 @@
   <script src="scripts/controllers/playlist.js"></script>
   <!-- endbuild -->
   <script type="text/javascript">
+    var opts = {
+      lines: 30, // The number of lines to draw
+      length: 12, // The length of each line
+      width: 1, // The line thickness
+      radius: 10, // The radius of the inner circle
+      corners: 1, // Corner roundness (0..1)
+      rotate: 0, // The rotation offset
+      direction: 1, // 1: clockwise, -1: counterclockwise
+      color: '#e0e0e0', // #rgb or #rrggbb or array of colors
+      speed: 1, // Rounds per second
+      trail: 75, // Afterglow percentage
+      shadow: false, // Whether to render a shadow
+      hwaccel: false, // Whether to use hardware acceleration
+    };
+    console.log($('.loading').length);
+    var spinner = new Spinner(opts).spin($('.spinner')[0]);
     // initialize sound cloud
     SC.initialize({
       client_id: '2c56bfb6e6b622cf4296e8f4635fba00'
