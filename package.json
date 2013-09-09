@@ -44,6 +44,8 @@
     "node": ">=0.8.0"
   },
   "scripts": {
-    "test": "grunt test"
+    "test": "grunt test",
+    "start" : "grunt",
+    "deploy" : "grunt build && git add dist/ && git commit -m 'Updating gh-pages' && git subtree push --prefix dist origin gh-pages"
   }
 }
