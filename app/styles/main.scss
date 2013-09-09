@@ -80,7 +80,9 @@ body {
         }
       }
     }
-
+    footer{
+      display:none;
+    }
   }
   &.player-active{
     padding-bottom: 80px;
