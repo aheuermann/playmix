@@ -32,38 +32,32 @@
 </nav>
 <div class="container" ng-animate="{enter: 'fade-show'}" ui-view></div>
 
-<div class="navbar navbar-fixed-bottom navbar-inverse" ng-class="{active: track}">
-  <div class="container" ng-controller="PlayerCtrl">
-    <ul class="nav navbar-nav">
-      <li>
-        <span class="controls btn-group navbar-form" ng-hide="tracksLoading">
-          <a class="prev btn btn-default btn-sm" ng-click="prev()"><i class="icon-step-backward"></i></a>
-          <a class="playToggle btn btn-default offset" ng-click="togglePlay()"><i ng-class="{false: 'icon-play', true: 'icon-pause'}[isPlaying()]"></i></a>
-          <a class="next btn btn-default btn-sm" ng-click="next()"><i class="icon-step-forward"></i></a>
-        </span>
-      </li>
-      <li>
-        <div>
-          <a ng-href="{{track.mix.permalink_url}}" target="_blank">
-            <img class="navbar-icon" ng-src="{{track.mix.artwork_url || track.original.icon}}" />
-            <span class="track-name" title="{{track.mix.title}}">
-              {{track.mix.title}}
-            </span>
-          </a>
+<div class="player" ng-class="{active: track}" ng-controller="PlayerCtrl">
+  <div class="track-details">
+    <span class="controls btn-group navbar-form" ng-hide="tracksLoading">
+      <a class="prev btn btn-default btn-sm" ng-click="prev()"><i class="icon-step-backward"></i></a>
+      <a class="playToggle btn btn-default offset" ng-click="togglePlay()"><i ng-class="{false: 'icon-play', true: 'icon-pause'}[isPlaying()]"></i></a>
+      <a class="next btn btn-default btn-sm" ng-click="next()"><i class="icon-step-forward"></i></a>
+    </span>
+    <a class="track-name" title="{{track.mix.title}}" ng-href="{{track.mix.permalink_url}}" target="_blank" >
+      {{track.mix.title}}
+    </a>
+     <div class="slider-container" ng-show="sound.position || sound.durationEstimate">
+      <div class="position">
+        {{sound.position | date:'mm:ss'}}
+      </div>
+      <div class="slider-wrapper">
+        <div class="slider">
+          <div class="percent-complete" ng-style="{width:percentComplete()}"></div>
+          <div class="dragger"></div>
         </div>
-        <div class="slider-container" ng-show="sound.position || sound.durationEstimate">
-          <div class="position">
-            {{sound.position | date:'mm:ss'}}
-          </div>
-          <div class="slider">
-            <div class="percent-complete" ng-style="{width:percentComplete()}"></div>
-            <div class="dragger"></div>
-          </div>
-          <div class="duration">
-            {{sound.durationEstimate | date:'mm:ss'}}
-          </div>
-        </div>
-      </li>
-    </ul>
+      </div>
+      <div class="duration">
+        {{sound.durationEstimate | date:'mm:ss'}}
+      </div>
+    </div>
+  </div>
+  <div class="record rotating">
+    <img class="track-image" ng-src="{{track.mix.artwork_url || track.original.icon}}" />
   </div>
 </div>

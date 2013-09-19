@@ -51,6 +51,57 @@ $iconWhiteSpritePath: "../images/glyphicons-halflings-white.png";
 @import "bootstrap-sass/lib/_utilities";
 @import "bootstrap-sass/lib/_responsive-utilities";
 
+
+@mixin keyframe ($animation_name) {
+    @-webkit-keyframes $animation_name {
+        @content;
+    }
+ 
+    @-moz-keyframes $animation_name {
+        @content;
+    }
+ 
+    @-o-keyframes $animation_name {
+        @content;
+    }
+ 
+    @keyframes $animation_name {
+        @content;
+    }
+}
+
+@mixin animation ($animation) {
+  -webkit-animation: $animation;
+  -moz-animation: $animation;
+  -o-animation:$animation;
+  animation: $animation;
+}
+
+@include keyframe(rotating) {
+    from{
+        @include rotate(0deg);
+    }
+    to{
+        @include rotate(360deg);
+    }
+}
+
+@include keyframe(rotating-opposite) {
+    from{
+        @include rotate(360deg);
+    }
+    to{
+        @include rotate(0deg);
+    }
+}
+
+.rotating {
+  @include animation(rotating 2s linear infinite);
+}
+.rotating-opposite {
+  @include animation(rotating-opposite 2s linear infinite);
+}
+
 /* Put your CSS here */
 html, body {
   margin-top: 40px;
@@ -194,20 +245,57 @@ a {
   }
 }
 
-.navbar-fixed-bottom {
+.player {
   @include transition(bottom cubic-bezier(0.250, 0.460, 0.450, 0.940) .75s);
-  bottom:-60px;
+  bottom:-150px;
   color: $gray-lighter;
+  position:fixed;
+  padding: 10px;
+  
   &.active{
     bottom:0;
   }
-
-  a{
+  
+  a {
+    color: $gray-lighter;
+  }
+  
+  $record-width: 100px;
+  .record{
+    background-image: url(../images/record.png);
+    width: $record-width;
+    height: $record-width;
     display:inline-block;
-    text-decoration: none;
+    position:relative;
+    img{
+      width: $record-width/2+2;
+      height: $record-width/2+2;
+      border-radius: 50%;
+      position: absolute;
+      top:50%;
+      left:50%;
+      margin-top: -($record-width/2+2)/2;
+      margin-left: -($record-width/2+2)/2;
+    }
+  }
+ 
+  $detail-width: 400px;
+  .track-details {
+    width: $detail-width;
+    position:absolute;
+    background-color: rgba(0, 0, 0, 0.75);
+    top: 50%;
+    left: $record-width;
+    padding: 10px 20px 10px 40px;
+    margin-left: -20px;
+    margin-top: -27px;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+
   }
   .controls {
     user-select: none;
+    display:none;
     .playToggle{
       min-width:38px;
       &.offset.btn{
@@ -218,54 +306,43 @@ a {
     }
   }
   .track-name{
+    width: 100%;
+    display: block;
+    text-align: center;
     text-overflow: ellipsis;
-    max-width: 250px;
-    min-width: 250px;
     white-space: nowrap;
     overflow: hidden;
-    display: inline-block;
-    padding-left: 10px;
   }
   .slider-container{
     position:relative;
     margin-top:10px;
+    width: 100%;
     .position, .duration{
       position: absolute;
-      font-size: 10px;
-      top:0;
-      line-height: 10px;
-      margin-top: -5px;
+      font-size: 11px;
+      top:-4px;
+      line-height: 100%;
     }
     .position {
       left:0;
     }
     .duration{
-      right:-64px;
+      right:0;
     }
-    .slider{
-      margin: 0 32px;
-      width: 100%;
-      height: 3px;
-      background-color: $gray-lighter;
-      .percent-complete{
-        height:100%;
-        background-color: $brand-primary;
-        width:0%;
-        float:left;
-        opacity: .8;
-        @include transition(width linear 1s);
-      }
-      .dragger{
-        width: 15px;
-        height: 15px;
-        border-radius: 50%;
-        background-color: blue;
-        position:relative;
-        float:left;
-        top: -5px;
-        left: -8px;
-        opacity: .75;
-        display:none;
+    .slider-wrapper{
+      padding: 0px 32px;
+      .slider{
+        width: 100%;
+        height: 4px;
+        background-color: $gray;
+        .percent-complete{
+          height:100%;
+          background-color: $brand-primary;
+          width:0%;
+          float:left;
+          opacity: 1;
+          @include transition(width linear 1s);
+        }
       }
     }
   }
