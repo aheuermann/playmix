@@ -1,6 +1,6 @@
 'use strict';
 
-var app = angular.module('remixApp', ['ui.router', 'uiSlider']);
+var app = angular.module('remixApp', ['ui.router']);
 app.config(function ($urlRouterProvider, $locationProvider, $stateProvider) {
   //$locationProvider.html5Mode(true);
   $urlRouterProvider
