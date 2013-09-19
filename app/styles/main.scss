@@ -303,6 +303,7 @@ a {
   $detail-width: 400px;
   .track-details {
     width: $detail-width;
+    min-height:53px;
     position:absolute;
     background-color: rgba(0, 0, 0, 0.75);
     top: 50%;
