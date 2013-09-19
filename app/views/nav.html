@@ -36,10 +36,10 @@
   <div class="container">
     <ul class="nav navbar-nav">
       <li class="playing-track" ng-controller="PlayerCtrl">
-        <span class="controls" ng-hide="tracksLoading">
-          <a class="prev" ng-click="prev()"><i class="icon-step-backward"></i></a>
-          <a class="playToggle" ng-click="togglePlay()"><i ng-class="{false: 'icon-play', true: 'icon-pause'}[isPlaying()]"></i></a>
-          <a class="next" ng-click="next()"><i class="icon-step-forward"></i></a>
+        <span class="controls btn-group" ng-hide="tracksLoading">
+          <a class="prev btn btn-default btn-sm" ng-click="prev()"><i class="icon-step-backward"></i></a>
+          <a class="playToggle btn btn-default offset" ng-click="togglePlay()"><i ng-class="{false: 'icon-play', true: 'icon-pause'}[isPlaying()]"></i></a>
+          <a class="next btn btn-default btn-sm" ng-click="next()"><i class="icon-step-forward"></i></a>
         </span>
         <a ng-href="{{track.mix.permalink_url}}" target="_blank">
           <img class="navbar-icon" ng-src="{{track.mix.artwork_url || track.original.icon}}" />
