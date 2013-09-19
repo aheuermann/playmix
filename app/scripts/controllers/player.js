@@ -1,6 +1,6 @@
 'use strict';
 
-app.controller('PlayerCtrl', function ($scope, Player) {
+app.controller('PlayerCtrl', function ($scope, $filter, Player) {
   $scope.isPlaying = Player.isPlaying;
 
   $scope.next = Player.next;
@@ -9,4 +9,7 @@ app.controller('PlayerCtrl', function ($scope, Player) {
 
   $scope.togglePlay = Player.togglePlay;
 
+  $scope.percentComplete = _.throttle(function() {
+    return Player.percentComplete() + "%";
+  }, 1000);
 });

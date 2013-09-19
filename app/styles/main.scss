@@ -194,10 +194,13 @@ a {
   }
 }
 
-.navbar .playing-track {
+.navbar-fixed-bottom {
+  @include transition(bottom cubic-bezier(0.250, 0.460, 0.450, 0.940) .75s);
+  bottom:-60px;
   color: $gray-lighter;
-  padding-right: 10px;
-  padding-left: 10px;
+  &.active{
+    bottom:0;
+  }
 
   a{
     display:inline-block;
@@ -207,7 +210,7 @@ a {
     user-select: none;
     .playToggle{
       min-width:38px;
-      &.offset{
+      &.offset.btn{
         margin-top: -3px;
         border-top-left-radius: 3px;
         border-top-right-radius: 3px;
@@ -216,11 +219,57 @@ a {
   }
   .track-name{
     text-overflow: ellipsis;
-    max-width: 220px;
+    max-width: 250px;
+    min-width: 250px;
     white-space: nowrap;
     overflow: hidden;
     display: inline-block;
+    padding-left: 10px;
   }
+  .slider-container{
+    position:relative;
+    margin-top:10px;
+    .position, .duration{
+      position: absolute;
+      font-size: 10px;
+      top:0;
+      line-height: 10px;
+      margin-top: -5px;
+    }
+    .position {
+      left:0;
+    }
+    .duration{
+      right:-64px;
+    }
+    .slider{
+      margin: 0 32px;
+      width: 100%;
+      height: 3px;
+      background-color: $gray-lighter;
+      .percent-complete{
+        height:100%;
+        background-color: $brand-primary;
+        width:0%;
+        float:left;
+        opacity: .8;
+        @include transition(width linear 1s);
+      }
+      .dragger{
+        width: 15px;
+        height: 15px;
+        border-radius: 50%;
+        background-color: blue;
+        position:relative;
+        float:left;
+        top: -5px;
+        left: -8px;
+        opacity: .75;
+        display:none;
+      }
+    }
+  }
+
 }
 
 .globalAlert {
@@ -238,13 +287,6 @@ a {
   }
 }
 
-.navbar-fixed-bottom{
-  @include transition(bottom cubic-bezier(0.250, 0.460, 0.450, 0.940) .75s);
-  bottom:-60px;
-  &.active{
-    bottom:0;
-  }
-}
 
 .tracks {
   margin-top: 25px;

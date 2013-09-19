@@ -120,6 +120,13 @@ app.factory('Player', function ($q, $rootScope, SoundCloud, Alert) {
     return _tracks;
   }
 
+  var percentComplete = function() {
+    if ($rootScope.sound){
+      return $rootScope.sound.position / $rootScope.sound.durationEstimate * 100
+    }
+    return 0;
+  }
+
   return {
     queue: queue,
     lookupAndPlay: lookupAndPlay,
@@ -127,6 +134,7 @@ app.factory('Player', function ($q, $rootScope, SoundCloud, Alert) {
     prev: prev,
     isPlaying: isPlaying,
     togglePlay: togglePlay,
-    getTracks: getTracks
+    getTracks: getTracks,
+    percentComplete: percentComplete
   }
 });
