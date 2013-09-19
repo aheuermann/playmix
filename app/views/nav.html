@@ -34,11 +34,6 @@
 
 <div class="player" ng-class="{active: track}" ng-controller="PlayerCtrl">
   <div class="track-details">
-    <span class="controls btn-group navbar-form" ng-hide="tracksLoading">
-      <a class="prev btn btn-default btn-sm" ng-click="prev()"><i class="icon-step-backward"></i></a>
-      <a class="playToggle btn btn-default offset" ng-click="togglePlay()"><i ng-class="{false: 'icon-play', true: 'icon-pause'}[isPlaying()]"></i></a>
-      <a class="next btn btn-default btn-sm" ng-click="next()"><i class="icon-step-forward"></i></a>
-    </span>
     <a class="track-name" title="{{track.mix.title}}" ng-href="{{track.mix.permalink_url}}" target="_blank" >
       {{track.mix.title}}
     </a>
@@ -59,5 +54,12 @@
   </div>
   <div class="record rotating">
     <img class="track-image" ng-src="{{track.mix.artwork_url || track.original.icon}}" />
+  </div>
+  <div class="controls-container">
+    <div class="controls btn-group navbar-form" ng-hide="tracksLoading">
+      <a class="prev btn btn-default btn-sm" ng-click="prev()"><i class="icon-step-backward"></i></a>
+      <a class="playToggle btn btn-default offset" ng-click="togglePlay()"><i ng-class="{false: 'icon-play', true: 'icon-pause'}[isPlaying()]"></i></a>
+      <a class="next btn btn-default btn-sm" ng-click="next()"><i class="icon-step-forward"></i></a>
+    </div>
   </div>
 </div>

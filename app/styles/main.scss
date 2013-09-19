@@ -256,10 +256,6 @@ a {
     bottom:0;
   }
   
-  a {
-    color: $gray-lighter;
-  }
-  
   $record-width: 115px;
   .record{
     background-image: url(../images/record.png);
@@ -279,7 +275,31 @@ a {
       border: 6px solid darken($gray-dark, 5%);
     }
   }
- 
+  .controls-container{
+    @include transition(opacity cubic-bezier(0.250, 0.460, 0.450, 0.940) 0.5s);
+    height: $record-width;
+    position: absolute;
+    left: 0;
+    top: 0;
+    padding-left: 6px;
+    opacity: 0;
+    &:hover {
+      opacity: 1;
+    }
+    .controls {
+      margin:0 auto;
+      margin-top: $record-width/2 - 2;
+      user-select: none;
+      .playToggle{
+        min-width:38px;
+        &.offset.btn{
+          margin-top: -3px;
+          border-top-left-radius: 3px;
+          border-top-right-radius: 3px;
+        }
+      }
+    }
+  }
   $detail-width: 400px;
   .track-details {
     width: $detail-width;
@@ -292,20 +312,11 @@ a {
     margin-top: -27px;
     border-top-right-radius: 5px;
     border-bottom-right-radius: 5px;
-
-  }
-  .controls {
-    user-select: none;
-    display:none;
-    .playToggle{
-      min-width:38px;
-      &.offset.btn{
-        margin-top: -3px;
-        border-top-left-radius: 3px;
-        border-top-right-radius: 3px;
-      }
+    a {
+      color: $gray-lighter;
     }
   }
+  
   .track-name{
     width: 100%;
     display: block;
