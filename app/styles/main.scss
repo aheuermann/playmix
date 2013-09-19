@@ -260,7 +260,7 @@ a {
     color: $gray-lighter;
   }
   
-  $record-width: 100px;
+  $record-width: 115px;
   .record{
     background-image: url(../images/record.png);
     width: $record-width;
@@ -268,14 +268,15 @@ a {
     display:inline-block;
     position:relative;
     img{
-      width: $record-width/2+2;
-      height: $record-width/2+2;
+      width: $record-width/2;
+      height: $record-width/2;
       border-radius: 50%;
       position: absolute;
       top:50%;
       left:50%;
-      margin-top: -($record-width/2+2)/2;
-      margin-left: -($record-width/2+2)/2;
+      margin-top: -($record-width/2)/2;
+      margin-left: -($record-width/2)/2;
+      border: 6px solid darken($gray-dark, 5%);
     }
   }
  
