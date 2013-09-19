@@ -251,6 +251,7 @@ a {
   color: $gray-lighter;
   position:fixed;
   padding: 10px;
+  right:0;
   
   &.active{
     bottom:0;
@@ -302,17 +303,17 @@ a {
   }
   $detail-width: 400px;
   .track-details {
+    right: 0 + $record-width;
     width: $detail-width;
     min-height:53px;
     position:absolute;
     background-color: rgba(0, 0, 0, 0.75);
     top: 50%;
-    left: $record-width;
-    padding: 10px 20px 10px 40px;
+    padding: 10px 20px 12px 40px;
     margin-left: -20px;
     margin-top: -27px;
-    border-top-right-radius: 5px;
-    border-bottom-right-radius: 5px;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
     a {
       color: $gray-lighter;
     }
