@@ -265,8 +265,8 @@ a {
     display:inline-block;
     position:relative;
     img{
-      width: $record-width/2;
-      height: $record-width/2;
+      width: $record-width / 2;
+      height: $record-width / 2;
       border-radius: 50%;
       position: absolute;
       top:50%;
@@ -305,13 +305,12 @@ a {
   .track-details {
     right: 0 + $record-width;
     width: $detail-width;
-    min-height:53px;
     position:absolute;
     background-color: rgba(0, 0, 0, 0.75);
     top: 50%;
-    padding: 10px 20px 12px 40px;
+    padding: 10px 20px;
     margin-left: -20px;
-    margin-top: -27px;
+    margin-top: -20px;
     border-top-left-radius: 10px;
     border-bottom-left-radius: 10px;
     a {
@@ -327,40 +326,31 @@ a {
     white-space: nowrap;
     overflow: hidden;
   }
-  .slider-container{
-    position:relative;
-    margin-top:10px;
-    width: 100%;
-    .position, .duration{
-      position: absolute;
-      font-size: 11px;
-      top:-4px;
-      line-height: 100%;
+
+  .progress-arc{
+    width: $record-width + 12;
+    height: $record-width + 12;
+    position:absolute;
+    top: 4px;
+    right: 3px;
+    circle, path{
+      fill: transparent;
+      stroke-width: 10px;
     }
-    .position {
-      left:0;
+    circle{
+      stroke: $gray-lighter;
+      display:none;
     }
-    .duration{
-      right:0;
-    }
-    .slider-wrapper{
-      padding: 0px 32px;
-      .slider{
-        width: 100%;
-        height: 4px;
-        background-color: $gray;
-        .percent-complete{
-          height:100%;
-          background-color: $brand-primary;
-          width:0%;
-          float:left;
-          opacity: 1;
-          @include transition(width linear 1s);
-        }
-      }
+    path{
+      stroke: darken($brand-primary, 20%);
     }
   }
-
+  .time-left{
+    position:absolute;
+    top: 100px;
+    right: 48px;
+    z-index: 100;
+  }
 }
 
 .globalAlert {
