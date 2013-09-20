@@ -19,7 +19,8 @@ module.exports = function (grunt) {
   // configurable paths
   var yeomanConfig = {
     app: 'app',
-    dist: 'dist'
+    dist: 'dist',
+    root: './'
   };
 
   try {
@@ -289,6 +290,13 @@ module.exports = function (grunt) {
           dest: '<%= yeoman.dist %>/font',
           src: [
             '*'
+          ]
+        }, {
+          expand: true,
+          cwd: '<%= yeoman.root %>',
+          dest: '<%= yeoman.dist %>',
+          src: [
+            'CNAME'
           ]
         }]
       },
