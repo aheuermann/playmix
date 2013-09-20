@@ -37,22 +37,23 @@
     <a class="track-name" title="{{track.mix.title}}" ng-href="{{track.mix.permalink_url}}" target="_blank" >
       {{track.mix.title}}
     </a>
-     <div class="slider-container" ng-show="sound.position || sound.durationEstimate">
-      <div class="position">
-        {{sound.position | date:'mm:ss'}}
-      </div>
-      <div class="slider-wrapper">
-        <div class="slider">
-          <div class="percent-complete" ng-style="{width:percentComplete()}"></div>
-          <div class="dragger"></div>
-        </div>
-      </div>
-      <div class="duration">
-        {{sound.durationEstimate | date:'mm:ss'}}
-      </div>
-    </div>
   </div>
-  <div class="record rotating">
+  <!--<canvas class="progressArc" progress-arc width="200" height="200"></canvas> -->
+  <svg class="progress-arc">
+    <circle cx="62.5" cy="63.5" ng-attr-r="{{radius}}" />
+    <path 
+        ng-attr-d="
+          M62.5, 8.5
+          A{{radius}},{{radius}} 0 0,1 {{x1}},{{y1}}
+        "
+    /><path
+        ng-attr-d="
+          M62.5,118.5
+           A{{radius}},{{radius}} 0 0,1 {{x2}},{{y2}}
+        "
+    />
+  </svg>
+  <div ng-class="{rotating: isPlaying()}" class="record">
     <img class="track-image" ng-src="{{track.mix.artwork_url || track.original.icon}}" />
   </div>
   <div class="controls-container">
@@ -61,5 +62,8 @@
       <a class="playToggle btn btn-default offset" ng-click="togglePlay()"><i ng-class="{false: 'icon-play', true: 'icon-pause'}[isPlaying()]"></i></a>
       <a class="next btn btn-default btn-sm" ng-click="next()"><i class="icon-step-forward"></i></a>
     </div>
+  </div>
+  <div class="time-left">
+    -{{(sound.durationEstimate-sound.position) | date:'mm:ss'}}
   </div>
 </div>
