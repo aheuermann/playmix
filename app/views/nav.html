@@ -38,9 +38,7 @@
       {{track.mix.title}}
     </a>
   </div>
-  <!--<canvas class="progressArc" progress-arc width="200" height="200"></canvas> -->
   <svg class="progress-arc">
-    <circle cx="62.5" cy="63.5" ng-attr-r="{{radius}}" />
     <path 
         ng-attr-d="
           M62.5, 8.5
@@ -49,7 +47,7 @@
     /><path
         ng-attr-d="
           M62.5,118.5
-           A{{radius}},{{radius}} 0 0,1 {{x2}},{{y2}}
+          A{{radius}},{{radius}} 0 0,1 {{x2}},{{y2}}
         "
     />
   </svg>
