@@ -122,7 +122,7 @@ app.factory('Player', function ($q, $rootScope, SoundCloud, Alert) {
 
   var percentComplete = function() {
     if ($rootScope.sound){
-      return $rootScope.sound.position / $rootScope.sound.durationEstimate * 100
+      return $rootScope.sound.position / $rootScope.sound.durationEstimate;
     }
     return 0;
   }
