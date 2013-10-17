@@ -4,14 +4,10 @@ app.controller('PlayerCtrl', function ($scope, $filter, Player) {
   var startX = 62.5,
       startY = 8.5,
       halfX = startX,
-      radius = $scope.radius = 55,
+      radius = 55,
       halfY = startY + radius;
 
-  $scope.isPlaying = Player.isPlaying;
-  $scope.next = Player.next;
-  $scope.prev = Player.prev;
-  $scope.togglePlay = Player.togglePlay;
-
+  $scope.radius = radius;
   $scope.x1 = startX;
   $scope.y1 = startY;
   $scope.x2 = halfX;
@@ -32,5 +28,10 @@ app.controller('PlayerCtrl', function ($scope, $filter, Player) {
     $scope.x2 = 62.5 - $scope.radius*Math.cos(d2*(Math.PI/180));
     $scope.y2 = 63.5 - $scope.radius*Math.sin(d2*(Math.PI/180));
   }, 500));
+
+  $scope.isPlaying = Player.isPlaying;
+  $scope.next = Player.next;
+  $scope.prev = Player.prev;
+  $scope.togglePlay = Player.togglePlay;
 
 });
